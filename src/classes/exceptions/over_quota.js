@@ -5,6 +5,6 @@ export default class OverQuota extends Exception {
   constructor(message: string) {
     super();
     this.name = this.constructor.name;
-    this.message = message || 'Over quota';
+    this.message = message || 'Over plan quota on this endpoint.';
   }
 }
