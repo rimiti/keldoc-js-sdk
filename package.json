@@ -1,0 +1,68 @@
+{
+  "name": "keldoc-js-sdk",
+  "version": "0.0.1",
+  "description": "Keldoc Javascript SDK",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf coverage dist tmp",
+    "lint": "eslint .",
+    "typecheck": "flow check",
+    "pretest": "npm run lint",
+    "test": "npm run test-only",
+    "test-only": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:watch": "jest --watch",
+    "build": "babel src/**/*.js -d dist",
+    "build:watch": "babel --watch src/**/*.js -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rimiti/keldoc-js-sdk.git"
+  },
+  "keywords": [
+    "keldoc",
+    "sdk",
+    "api"
+  ],
+  "author": {
+    "name": "Dimitri DO BAIRRO",
+    "email": "dimitri.dobairro@dimsolution.com",
+    "url": "dimsolution.com"
+  },
+  "bugs": {
+    "url": "https://github.com/rimiti/keldoc-js-sdk/issues"
+  },
+  "engines": {
+    "node": ">=6.9"
+  },
+  "engineStrict": true,
+  "homepage": "https://github.com/rimiti/keldoc-js-sdk#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "~6.26.0",
+    "babel-eslint": "~8.0.1",
+    "babel-jest": "~21.2.0",
+    "babel-plugin-transform-async-to-generator": "~6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "~6.26.0",
+    "babel-plugin-transform-flow-strip-types": "~6.22.0",
+    "babel-plugin-transform-runtime": "~6.23.0",
+    "babel-preset-stage-3": "~6.24.1",
+    "coveralls": "^3.0.0",
+    "eslint": "~4.8.0",
+    "eslint-config-airbnb-base": "~12.0.2",
+    "eslint-plugin-flowtype": "~2.39.1",
+    "eslint-plugin-import": "~2.7.0",
+    "flow-bin": "~0.56.0",
+    "jest": "~21.2.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  }
+}
