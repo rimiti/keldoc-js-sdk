@@ -2,10 +2,11 @@
 import Common from './common';
 
 export default class Agenda extends Common {
-  static get() {
-    Agenda.send({});
+  get() {
+    Common.send({});
   }
-  static test() : void {
-    console.log('tesst');
+
+  test(): void {
+    console.log('I\'m called from my test.');
   }
 }
