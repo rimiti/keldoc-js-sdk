@@ -3,16 +3,16 @@ import Agenda from './agenda';
 
 export default class SDK {
   configuration: Object;
-  agendaSDK: Agenda;
+  agendaClass: Agenda;
 
   constructor(configuration: {}) {
     this.configuration = configuration;
   }
 
   get agenda(): Agenda {
-    if (!this.agendaSDK) {
-      this.agendaSDK = new Agenda();
+    if (!this.agendaClass) {
+      this.agendaClass = new Agenda();
     }
-    return this.agendaSDK;
+    return this.agendaClass;
   }
 }
