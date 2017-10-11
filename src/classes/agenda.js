@@ -1,16 +1,11 @@
-//@flow
+// @flow
 import Common from './common';
 
 export default class Agenda extends Common {
-  constructor() {
-    super();
+  static get() {
+    Agenda.send({});
   }
-
-  get() {
-
+  static test() : void {
+    console.log('tesst');
   }
-
-
-
-
 }

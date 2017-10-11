@@ -1,12 +1,17 @@
 // @flow
-import BadRequest from './exceptions/bad_request';
 import axios from 'axios';
+import BadRequest from './exceptions/bad_request';
 
 export default class Common {
-  constructor() {
-  }
+  static send(body: {}) {
+    axios.post('/', body)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-  send(body: {}) {
     if (400) throw new BadRequest();
   }
 }
