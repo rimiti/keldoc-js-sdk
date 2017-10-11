@@ -11,7 +11,7 @@ export default class SDK {
 
   get agenda(): Agenda {
     if (!this.agendaClass) {
-      this.agendaClass = new Agenda();
+      this.agendaClass = new Agenda(this.configuration);
     }
     return this.agendaClass;
   }

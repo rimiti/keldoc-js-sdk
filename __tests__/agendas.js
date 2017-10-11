@@ -8,8 +8,10 @@ describe('Agendas', () => {
     instance = sdk.create();
     done();
   });
-  it('GET', () => {
-    console.log(' ==> ', instance.agenda.test());
+  it('GET', (done) => {
+    instance.agenda.get().then((response) => {
+      done();
+    });
     expect(true).toEqual(true);
   });
 });
