@@ -6,12 +6,15 @@ export default class Common {
   constructor(configuration: {}) {
     this.configuration = configuration;
     this.options = {
-      'Content-Type': 'application/json',
-      'Authorization': this.configuration.auth_token,
+      headers: {
+        'content-type': 'application/json',
+        'accept': 'application/vnd.keldoc-v1+json',
+        'authorization': this.configuration.auth_token,
+      },
     };
   }
 
-  static get(url: string) : Promise<Object> {
+  get(url: string) : Promise<Object> {
     return new Promise((resolve, reject) => {
       axios.get(url, this.options)
         .then((response) => { this.httpStatus(response); })
@@ -22,7 +25,7 @@ export default class Common {
     });
   }
 
-  static post(url: string, body: {}) : Promise<Object> {
+  post(url: string, body: {}) : Promise<Object> {
     return new Promise((resolve, reject) => {
       axios.post(url, body, this.options)
        .then((response) => { this.httpStatus(response); })
@@ -33,7 +36,7 @@ export default class Common {
     });
   }
 
-  static put(url: string, body: {}) : Promise<Object> {
+  put(url: string, body: {}) : Promise<Object> {
     return new Promise((resolve, reject) => {
       axios.put(url, body, this.options)
         .then((response) => { this.httpStatus(response); })
@@ -44,7 +47,7 @@ export default class Common {
     });
   }
 
-  static delete(url: string, body: {}) : Promise<Object> {
+  delete(url: string, body: {}) : Promise<Object> {
     return new Promise((resolve, reject) => {
       axios.get(url, body, this.options)
         .then((response) => { this.httpStatus(response); })
@@ -55,7 +58,7 @@ export default class Common {
     });
   }
 
-  static httpStatus(response) : void {
+  httpStatus(response) : void {
     return new Promise((resolve) => {
       if (response.status === 400 ) throw new BadRequest();
       else if (response.status === 401) throw new Unauthorized();
