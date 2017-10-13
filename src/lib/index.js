@@ -2,26 +2,32 @@
 import SDK from '../classes';
 
 const configuration = {
-  auth_token: '1wxcvdfgdfgdfgdfg2131454sdf',
+  auth_token: '165416s5dfsds564sfdf2df',
   host: 'http://www.example.com',
   routes: {
     agendas: {
-      ressourceUrl: '/agendas.json',
+      ressourceUrl: 'agendas.json',
     },
     appointments: {
-      ressourceUrl: '/appointments',
+      ressourceUrl: 'appointments',
     },
     availabilities: {
-      ressourceUrl: '/availabilities',
+      ressourceUrl: 'availabilities',
     },
     motives: {
-      ressourceUrl: '/motives.json',
+      ressourceUrl: 'motives.json',
     },
     patients: {
-      ressourceUrl: '/patients',
+      ressourceUrl: 'patients',
     },
     specialties: {
-      ressourceUrl: '/specialties',
+      ressourceUrl: 'specialties',
+    },
+    config: {
+      ressourceUrl: 'config',
+    },
+    webhooks: {
+      ressourceUrl: 'config/webhooks',
     },
   },
 };
