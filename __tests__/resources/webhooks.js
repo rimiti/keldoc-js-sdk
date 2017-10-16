@@ -12,12 +12,15 @@ describe('Config', () => {
     instance = sdk.create();
     done();
   });
+  afterEach(() => {
+    mock.reset();
+  });
   it('POST', (done) => {
-    mock.onPost('/http://www.example.com/config/webhooks', {})
+    mock.onPost('/http://www.example.com/config/webhooks', {url: 'http://test.webhook.com'})
       .reply(200, {
         url: 'https://partner.com/callback',
       });
-    instance.webhooks.create({}).then((response) => {
+    instance.webhooks.create({url: 'http://test.webhook.com'}).then((response) => {
       expect(response.status).toEqual(200);
       done();
     });

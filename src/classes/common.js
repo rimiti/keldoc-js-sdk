@@ -1,11 +1,10 @@
 // @flow
 import axios from 'axios';
+import Validation from './validation';
 
 export default class Common {
-  options: {
-    'Content-Type': string
-  };
   constructor(configuration: {}) {
+    this.validator = new Validation();
     this.configuration = configuration;
     this.options = {
       headers: {
@@ -63,7 +62,7 @@ export default class Common {
 
   delete(url: string, body: {}): Promise < Object > {
     return new Promise((resolve, reject) => {
-      axios.get(url, body, this.options)
+      axios.delete(url, this.options)
         .then((response) => {
           return this.httpStatus(response);
         })
@@ -88,4 +87,5 @@ export default class Common {
       resolve(response);
     });
   }
+
 }

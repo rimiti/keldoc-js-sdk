@@ -12,6 +12,9 @@ describe('Agendas', () => {
     instance = sdk.create();
     done();
   });
+  afterEach(() => {
+    mock.reset();
+  });
   it('GET', (done) => {
     mock.onGet('/http://www.example.com/agendas.json', {}).reply(200, [{
       id: 1,
