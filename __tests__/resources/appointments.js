@@ -79,6 +79,5 @@ describe('Appointments', () => {
       expect(response.status).toEqual(200);
       done();
     });
-    done();
   });
 });
