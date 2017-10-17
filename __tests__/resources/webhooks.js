@@ -16,7 +16,7 @@ describe('Config', () => {
     mock.reset();
   });
   it('POST', (done) => {
-    mock.onPost('/http://www.example.com/config/webhooks', {url: 'http://test.webhook.com'})
+    mock.onPost('http://www.example.com/config/webhooks', {url: 'http://test.webhook.com'})
       .reply(200, {
         url: 'https://partner.com/callback',
       });
@@ -27,7 +27,7 @@ describe('Config', () => {
   });
 
   it('PUT', (done) => {
-    mock.onPut('/http://www.example.com/config/webhooks', {})
+    mock.onPut('http://www.example.com/config/webhooks', {})
       .reply(200, {
         url: 'https://partner.com/callback',
       });
@@ -38,9 +38,9 @@ describe('Config', () => {
   });
 
   it('DELETE', (done) => {
-    mock.onDelete('/http://www.example.com/config/webhooks', {})
+    mock.onDelete('http://www.example.com/config/webhooks')
       .reply(200, {});
-    instance.webhooks.delete({}).then((response) => {
+    instance.webhooks.remove({}).then((response) => {
       expect(response.status).toEqual(200);
       done();
     });

@@ -2,8 +2,8 @@
 import Common from '../common';
 
 export default class Specialties extends Common {
-  get(): Promise < Object > {
-    const url = `${this.configuration.host}/${this.configuration.routes.specialties.ressourceUrl}`;
+  get() : Promise<any> {
+    const url = `${this.configuration.routes.specialties}`;
     return super.get(url);
   }
 }

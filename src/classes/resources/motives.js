@@ -2,8 +2,8 @@
 import Common from '../common';
 
 export default class Motives extends Common {
-  get(): Promise < Object > {
-    const url = `${this.configuration.host}/${this.configuration.routes.motives.ressourceUrl}`;
+  get() : Promise<any> {
+    const url = `${this.configuration.routes.motives}`;
     return super.get(url);
   }
 }

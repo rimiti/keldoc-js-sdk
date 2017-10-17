@@ -16,7 +16,7 @@ describe('Avalabilities', () => {
     mock.reset();
   });
   it('GET', (done) => {
-    mock.onGet('/http://www.example.com/availabilities', {
+    mock.onGet('http://www.example.com/availabilities', {
       agenda_ids: 112,
       end: '2017-09-18',
       start: '2017-09-18',

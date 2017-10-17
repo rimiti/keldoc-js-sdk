@@ -1,21 +1,21 @@
 // @flow
 import Common from '../common';
+import Validation from '../validation';
 
 export default class Webhooks extends Common {
-  create(body: {}): Promise < Object > {
-    this.validator.validateCreateWebhook(body);
-    const url = `${this.configuration.host}/${this.configuration.routes.webhooks.ressourceUrl}`;
-    console.log(url);
+  create(body: {url : string}) : Promise<any> {
+    Validation.validateCreateWebhook(body);
+    const url = `${this.configuration.routes.webhooks}`;
     return super.post(url, body);
   }
 
-  update(body: {}): Promise < Object > {
-    const url = `${this.configuration.host}/${this.configuration.routes.webhooks.ressourceUrl}`;
+  update(body: {}) : Promise<any> {
+    const url = `${this.configuration.routes.webhooks}`;
     return super.put(url, body);
   }
 
-  delete(body: {}): Promise < Object > {
-    const url = `${this.configuration.host}/${this.configuration.routes.webhooks.ressourceUrl}`;
-    return super.delete(url, body);
+  remove() : Promise<any> {
+    const url = `${this.configuration.routes.webhooks}`;
+    return super.delete(url);
   }
 }

@@ -1,27 +1,39 @@
 // @flow
 import axios from 'axios';
 import Validation from './validation';
+import type {Config} from './types';
+import {
+  BadRequest,
+  Unauthorized,
+  OverQuota,
+  NotFound,
+  NotAcceptable,
+  ValidationError,
+  InternalError,
+} from './exceptions';
 
 export default class Common {
-  constructor(configuration: {}) {
+  httpStatus: Function;
+  validator: Validation;
+  configuration: Config
+  options: {};
+  constructor(configuration: Config) {
     this.validator = new Validation();
     this.configuration = configuration;
     this.options = {
       headers: {
         'content-type': 'application/json',
-        'accept': 'application/vnd.keldoc-v1+json',
-        'authorization': this.configuration.auth_token,
+        accept: 'application/vnd.keldoc-v1+json',
+        authorization: this.configuration.auth_token,
       },
     };
   }
 
-  get(url: string): Promise < Object > {
+  get(url: string) : Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.get(url, this.options)
-        .then((response) => {
-          return this.httpStatus(response);
-        })
-        .then((response) => {
+      axios.get(this.configuration.host + url, this.options)
+        .then((response) => Common.httpStatus(response))
+        .then((response: {}) => {
           resolve(response);
         })
         .catch((error) => {
@@ -30,13 +42,11 @@ export default class Common {
     });
   }
 
-  post(url: string, body: {}): Promise < Object > {
+  post(url: string, body: {}) : Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.post(url, body, this.options)
-        .then((response) => {
-          return this.httpStatus(response);
-        })
-        .then((response) => {
+      axios.post(this.configuration.host + url, body, this.options)
+        .then((response) => Common.httpStatus(response))
+        .then((response: {}) => {
           resolve(response);
         })
         .catch((error) => {
@@ -45,13 +55,11 @@ export default class Common {
     });
   }
 
-  put(url: string, body: {}): Promise < Object > {
+  put(url: string, body: {}) : Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.put(url, body, this.options)
-        .then((response) => {
-          return this.httpStatus(response);
-        })
-        .then((response) => {
+      axios.put(this.configuration.host + url, body, this.options)
+        .then((response) => Common.httpStatus(response))
+        .then((response: {}) => {
           resolve(response);
         })
         .catch((error) => {
@@ -60,13 +68,11 @@ export default class Common {
     });
   }
 
-  delete(url: string, body: {}): Promise < Object > {
+  delete(url: string) : Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.delete(url, this.options)
-        .then((response) => {
-          return this.httpStatus(response);
-        })
-        .then((response) => {
+      axios.delete(this.configuration.host + url, this.options)
+        .then((response) => Common.httpStatus(response))
+        .then((response: {}) => {
           resolve(response);
         })
         .catch((error) => {
@@ -75,7 +81,7 @@ export default class Common {
     });
   }
 
-  httpStatus(response): void {
+  static httpStatus(response) : Promise<any> {
     return new Promise((resolve) => {
       if (response.status === 400) throw new BadRequest();
       else if (response.status === 401) throw new Unauthorized();
@@ -83,9 +89,8 @@ export default class Common {
       else if (response.status === 404) throw new NotFound();
       else if (response.status === 406) throw new NotAcceptable();
       else if (response.status === 422) throw new ValidationError();
-      else if (response.status >= 500) throw new InternalError();
+      else if (Number(response.status) >= 500) throw new InternalError();
       resolve(response);
     });
   }
-
 }

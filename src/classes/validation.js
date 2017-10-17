@@ -1,42 +1,42 @@
-import {MissingMandatoryParameter, InvalidDatetimeFormat} from './exceptions'
-import moment from 'moment'
+// @flow
+import moment from 'moment';
+import {MissingMandatoryParameter, InvalidDatetimeFormat} from './exceptions';
+
 
 export default class Validation {
-
-  //appointment validators
-  validateCreateAppointment(params: {}) {
-    const required_params = ['start_at', 'agenda_id', 'state'];
-    this.validateMandatoryParams(required_params, params);
-    if (!this._datetimeFormat(params.start_at)) throw new InvalidDatetimeFormat();
+  validateMandatoryParams: Function;
+  datetimeFormat: Function;
+  // appointment validators
+  static validateCreateAppointment(params: {start_at: string}) {
+    const requiredParams = ['start_at', 'agenda_id', 'state'];
+    Validation.validateMandatoryParams(requiredParams, params);
+    if (!Validation.datetimeFormat(params.start_at)) throw new InvalidDatetimeFormat();
   }
-
-  validateUpdateAppointment(params: {}) {
-    const required_params = ['start_at', 'agenda_id']
-    this.validateMandatoryParams(required_params, params);
-    if (!this._datetimeFormat(params.start_at)) throw new InvalidDatetimeFormat();
+  static validateUpdateAppointment(params: {start_at: string}) {
+    const requiredParams = ['start_at', 'agenda_id'];
+    Validation.validateMandatoryParams(requiredParams, params);
+    if (!Validation.datetimeFormat(params.start_at)) throw new InvalidDatetimeFormat();
   }
-
-  //availabilities validators
-  validateFetchAvailabilities(params: {}) {
-    const required_params = ['motive_id']
-    this.validateMandatoryParams(required_params, params);
-    if (!this._datetimeFormat(params.start_date)) throw new InvalidDatetimeFormat();
-    if (!this._datetimeFormat(params.end_date)) throw new InvalidDatetimeFormat();
+  // availabilities validators
+  static validateFetchAvailabilities(params: {start_date: string, end_date: string}) {
+    const requiredParams = ['motive_id'];
+    Validation.validateMandatoryParams(requiredParams, params);
+    if (!Validation.datetimeFormat(params.start_date)) throw new InvalidDatetimeFormat();
+    if (!Validation.datetimeFormat(params.end_date)) throw new InvalidDatetimeFormat();
   }
-  //webhook validators
-  validateCreateWebhook(params: {}) {
-    const required_params = ['url']
-    this.validateMandatoryParams(required_params, params);
+  // webhook validators
+  static validateCreateWebhook(params: {}) {
+    const requiredParams = ['url'];
+    Validation.validateMandatoryParams(requiredParams, params);
   }
-
-  validateMandatoryParams(mandatory_params: Array< string >, request_obj: {}) {
-    const request_keys = Object.keys(request_obj);
-    const missing_params = mandatory_params.filter((attribute) =>  { return request_keys.indexOf(attribute) < 0 });
-    if (missing_params.length > 0) throw new MissingMandatoryParameter(`Parameter(s) ${JSON.stringify(missing_params)} missing`);
+  static validateMandatoryParams(mandatoryParams: Array< string >, requestObj: {}): void {
+    const requestKeys = Object.keys(requestObj);
+    const missingParams = mandatoryParams.filter((attribute) => requestKeys.indexOf(attribute) < 0);
+    if (missingParams.length > 0) {
+      throw new MissingMandatoryParameter(`Parameter(s) ${JSON.stringify(missingParams)} missing`);
+    }
   }
-
-  _datetimeFormat(datetime) {
+  static datetimeFormat(datetime: string) {
     return moment(datetime, moment.ISO_8601, true).isValid();
   }
-
 }

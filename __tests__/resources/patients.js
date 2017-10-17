@@ -16,7 +16,7 @@ describe('Patients', () => {
     mock.reset();
   });
   it('POST', (done) => {
-    mock.onPost('/http://www.example.com/patients', {}).reply(200, {
+    mock.onPost('http://www.example.com/patients', {}).reply(200, {
       first_name: 'Julien',
       last_name: 'Flandrin',
       birth_date: '2001-09-23',
@@ -34,7 +34,7 @@ describe('Patients', () => {
   });
 
   it('PUT', (done) => {
-    mock.onPut('/http://www.example.com/patients/12026', {}).reply(200, {
+    mock.onPut('http://www.example.com/patients/12026', {}).reply(200, {
       first_name: 'Julien',
       last_name: 'Flandrin',
       birth_date: '2001-09-23',

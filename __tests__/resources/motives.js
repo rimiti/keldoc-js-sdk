@@ -16,7 +16,7 @@ describe('Motives', () => {
     mock.reset();
   });
   it('GET', (done) => {
-    mock.onGet('/http://www.example.com/motives.json', {}).reply(200, [{
+    mock.onGet('http://www.example.com/motives.json', {}).reply(200, [{
       id: 366,
       name: 'Consultation',
       specialty_id: 3,

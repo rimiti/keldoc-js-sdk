@@ -5,30 +5,14 @@ const configuration = {
   auth_token: '165416s5dfsds564sfdf2df',
   host: 'http://www.example.com',
   routes: {
-    agendas: {
-      ressourceUrl: 'agendas.json',
-    },
-    appointments: {
-      ressourceUrl: 'appointments',
-    },
-    availabilities: {
-      ressourceUrl: 'availabilities',
-    },
-    motives: {
-      ressourceUrl: 'motives.json',
-    },
-    patients: {
-      ressourceUrl: 'patients',
-    },
-    specialties: {
-      ressourceUrl: 'specialties',
-    },
-    config: {
-      ressourceUrl: 'config',
-    },
-    webhooks: {
-      ressourceUrl: 'config/webhooks',
-    },
+    agendas: '/agendas.json',
+    appointments: '/appointments',
+    availabilities: '/availabilities',
+    motives: '/motives.json',
+    patients: '/patients',
+    specialties: '/specialties',
+    config: '/config',
+    webhooks: '/config/webhooks',
   },
 };
 

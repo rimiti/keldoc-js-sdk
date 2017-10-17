@@ -16,7 +16,7 @@ describe('Config', () => {
     mock.reset();
   });
   it('GET', (done) => {
-    mock.onGet('/http://www.example.com/config', {}).reply(200, {
+    mock.onGet('http://www.example.com/config', {}).reply(200, {
       agendas: [{
         id: 552,
         name: 'Dr. Pierre KelDoc',

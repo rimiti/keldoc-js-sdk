@@ -2,8 +2,8 @@
 import Common from '../common';
 
 export default class Agendas extends Common {
-  get(): Promise < Object > {
-    const url = `${this.configuration.host}/${this.configuration.routes.agendas.ressourceUrl}`;
+  get(): Promise<any> {
+    const url = `${this.configuration.routes.agendas}`;
     return super.get(url);
   }
 }
