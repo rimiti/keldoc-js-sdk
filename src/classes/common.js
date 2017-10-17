@@ -33,12 +33,8 @@ export default class Common {
     return new Promise((resolve, reject) => {
       axios.get(this.configuration.host + url, this.options)
         .then((response) => Common.httpStatus(response))
-        .then((response: {}) => {
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error);
-        });
+        .then((response: {}) => resolve(response))
+        .catch((error) => reject(error));
     });
   }
 
@@ -46,12 +42,8 @@ export default class Common {
     return new Promise((resolve, reject) => {
       axios.post(this.configuration.host + url, body, this.options)
         .then((response) => Common.httpStatus(response))
-        .then((response: {}) => {
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error);
-        });
+        .then((response: {}) => resolve(response))
+        .catch((error) => reject(error));
     });
   }
 
@@ -59,12 +51,8 @@ export default class Common {
     return new Promise((resolve, reject) => {
       axios.put(this.configuration.host + url, body, this.options)
         .then((response) => Common.httpStatus(response))
-        .then((response: {}) => {
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error);
-        });
+        .then((response: {}) => resolve(response))
+        .catch((error) => reject(error));
     });
   }
 
@@ -72,12 +60,8 @@ export default class Common {
     return new Promise((resolve, reject) => {
       axios.delete(this.configuration.host + url, this.options)
         .then((response) => Common.httpStatus(response))
-        .then((response: {}) => {
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error);
-        });
+        .then((response: {}) => resolve(response))
+        .catch((error) => reject(error));
     });
   }
 
