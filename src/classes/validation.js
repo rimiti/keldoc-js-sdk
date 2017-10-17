@@ -33,7 +33,7 @@ export default class Validation {
     Validation.validateMandatoryParams(requiredParams, params);
   }
 
-  static validateMandatoryParams(mandatoryParams: Array<string>, requestObj: {}): void {
+  static validateMandatoryParams(mandatoryParams: Array<string>, requestObj: {}) {
     const requestKeys = Object.keys(requestObj);
     const missingParams = mandatoryParams.filter((attribute) => requestKeys.indexOf(attribute) < 0);
     if (missingParams.length > 0) {
@@ -41,7 +41,7 @@ export default class Validation {
     }
   }
 
-  static datetimeFormat(datetime: string) {
+  static datetimeFormat(datetime: string): boolean {
     return moment(datetime, moment.ISO_8601, true).isValid();
   }
 }
