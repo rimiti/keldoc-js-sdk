@@ -15,8 +15,9 @@ import {
 export default class Common {
   httpStatus: Function;
   validator: Validation;
-  configuration: Config
+  configuration: Config;
   options: {};
+
   constructor(configuration: Config) {
     this.validator = new Validation();
     this.configuration = configuration;
@@ -30,7 +31,7 @@ export default class Common {
     };
   }
 
-  get(url: string) : Promise<any> {
+  get(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.get(this.configuration.host + url, this.options)
         .then((response: {}) => resolve(response))
@@ -38,7 +39,7 @@ export default class Common {
     });
   }
 
-  post(url: string, body: {}) : Promise<any> {
+  post(url: string, body: {}): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.post(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
@@ -46,7 +47,7 @@ export default class Common {
     });
   }
 
-  put(url: string, body: {}) : Promise<any> {
+  put(url: string, body: {}): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.put(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
@@ -54,7 +55,7 @@ export default class Common {
     });
   }
 
-  delete(url: string) : Promise<any> {
+  delete(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.delete(this.configuration.host + url, this.options)
         .then((response: {}) => resolve(response))
@@ -62,7 +63,7 @@ export default class Common {
     });
   }
 
-  static httpStatus(status) : Promise<any> {
+  static httpStatus(status): Promise<any> {
     return new Promise((resolve) => {
       if (status === 400) throw new BadRequest();
       else if (status === 401) throw new Unauthorized();

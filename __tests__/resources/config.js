@@ -12,9 +12,9 @@ describe('Config', () => {
     instance = sdk.create();
     done();
   });
-  afterEach(() => {
-    mock.reset();
-  });
+
+  afterEach(() => mock.reset());
+
   it('GET', (done) => {
     mock.onGet('http://www.example.com/config', {}).reply(200, {
       agendas: [{

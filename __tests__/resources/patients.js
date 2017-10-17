@@ -12,9 +12,9 @@ describe('Patients', () => {
     instance = sdk.create();
     done();
   });
-  afterEach(() => {
-    mock.reset();
-  });
+
+  afterEach(() => mock.reset());
+
   it('POST', (done) => {
     mock.onPost('http://www.example.com/patients', {}).reply(200, {
       first_name: 'Julien',

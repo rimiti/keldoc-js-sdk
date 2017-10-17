@@ -12,9 +12,9 @@ describe('Specialities', () => {
     instance = sdk.create();
     done();
   });
-  afterEach(() => {
-    mock.reset();
-  });
+
+  afterEach(() => mock.reset());
+
   it('GET', (done) => {
     mock.onGet('http://www.example.com/specialties', {}).reply(200, [{
       id: 3,

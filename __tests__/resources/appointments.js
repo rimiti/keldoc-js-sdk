@@ -12,9 +12,9 @@ describe('Appointments', () => {
     instance = sdk.create();
     done();
   });
-  afterEach(() => {
-    mock.reset();
-  });
+
+  afterEach(() => mock.reset());
+
   it('POST', (done) => {
     mock.onPost('http://www.example.com/appointments', {start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
       .reply(200, {

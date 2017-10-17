@@ -12,9 +12,9 @@ describe('Config', () => {
     instance = sdk.create();
     done();
   });
-  afterEach(() => {
-    mock.reset();
-  });
+
+  afterEach(() => mock.reset());
+
   it('POST', (done) => {
     mock.onPost('http://www.example.com/config/webhooks', {url: 'http://test.webhook.com'})
       .reply(200, {
