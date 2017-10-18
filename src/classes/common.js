@@ -31,15 +31,15 @@ export default class Common {
     };
   }
 
-  get(url: string): Promise<any> {
+  getRequest(url: string, body: any) : Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.get(this.configuration.host + url, this.options)
+      axios.get(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(error));
     });
   }
 
-  post(url: string, body: {}): Promise<any> {
+  postRequest(url: string, body: any) : Promise<any> {
     return new Promise((resolve, reject) => {
       axios.post(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
@@ -47,7 +47,7 @@ export default class Common {
     });
   }
 
-  put(url: string, body: {}): Promise<any> {
+  putRequest(url: string, body: any) : Promise<any> {
     return new Promise((resolve, reject) => {
       axios.put(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
@@ -55,7 +55,7 @@ export default class Common {
     });
   }
 
-  delete(url: string): Promise<any> {
+  deleteRequest(url: string) : Promise<any> {
     return new Promise((resolve, reject) => {
       axios.delete(this.configuration.host + url, this.options)
         .then((response: {}) => resolve(response))

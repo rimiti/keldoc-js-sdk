@@ -18,8 +18,8 @@ describe('Avalabilities', () => {
   it('GET', (done) => {
     mock.onGet('http://www.example.com/availabilities', {
       agenda_ids: 112,
-      end: '2017-09-18',
-      start: '2017-09-18',
+      end_date: '2017-09-18',
+      start_date: '2017-09-18',
       motive_id: '366',
     })
       .reply(200, [{
@@ -32,7 +32,12 @@ describe('Avalabilities', () => {
         id: 3,
         name: 'Dr. KelDoc test3',
       }]);
-    instance.availabilities.get().then((response) => {
+    instance.availabilities.get({
+      agenda_ids: 112,
+      end_date: '2017-09-18',
+      start_date: '2017-09-18',
+      motive_id: '366',
+    }).then((response) => {
       expect(response.status).toEqual(200);
       done();
     });

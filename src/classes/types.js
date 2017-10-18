@@ -14,3 +14,8 @@ export type Config = {
   }
 }
 
+export type fetchAvailabilitiesRequest = {
+  motive_id: string,
+  start_date: string,
+  end_date: string
+}

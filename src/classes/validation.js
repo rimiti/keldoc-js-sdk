@@ -1,6 +1,7 @@
 // @flow
 import moment from 'moment';
 import {MissingMandatoryParameter, InvalidDatetimeFormat} from './exceptions';
+import type {fetchAvailabilitiesRequest} from './types';
 
 export default class Validation {
   validateMandatoryParams: Function;
@@ -20,8 +21,8 @@ export default class Validation {
   }
 
   // availabilities validators
-  static validateFetchAvailabilities(params: { start_date: string, end_date: string }) {
-    const requiredParams = ['motive_id'];
+  static validateFetchAvailabilities(params: fetchAvailabilitiesRequest) {
+    const requiredParams = ['motive_id', 'start_date', 'end_date'];
     Validation.validateMandatoryParams(requiredParams, params);
     if (!Validation.datetimeFormat(params.start_date)) throw new InvalidDatetimeFormat();
     if (!Validation.datetimeFormat(params.end_date)) throw new InvalidDatetimeFormat();
