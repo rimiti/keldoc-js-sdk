@@ -41,5 +41,16 @@ describe('Avalabilities', () => {
       expect(response.status).toEqual(200);
       done();
     });
+
+    // lazy loading availabities test
+    instance.availabilities.get({
+      agenda_ids: 112,
+      end_date: '2017-09-18',
+      start_date: '2017-09-18',
+      motive_id: '366',
+    }).then((response) => {
+      expect(response.status).toEqual(200);
+      done();
+    });
   });
 });

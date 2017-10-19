@@ -24,6 +24,11 @@ describe('Config', () => {
       expect(response.status).toEqual(200);
       done();
     });
+    // lazy loading motives test
+    instance.webhooks.create({url: 'http://test.webhook.com'}).then((response) => {
+      expect(response.status).toEqual(200);
+      done();
+    });
   });
 
   it('PUT', (done) => {

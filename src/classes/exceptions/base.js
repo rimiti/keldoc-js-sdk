@@ -1,18 +1,21 @@
 // @flow
 export default class Exception {
+  ename: string;
+  emessage: string;
+
   get name(): string {
-    return this.name;
+    return this.ename;
   }
 
   set name(value: string) {
-    this.name = value;
+    this.ename = value;
   }
 
   get message(): string {
-    return this.message;
+    return this.emessage;
   }
 
   set message(value: string) {
-    this.message = value;
+    this.emessage = value;
   }
 }

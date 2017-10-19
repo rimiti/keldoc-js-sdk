@@ -10,6 +10,7 @@ import {
   NotAcceptable,
   ValidationError,
   InternalError,
+  UnknownError,
 } from './exceptions';
 
 export default class Common {
@@ -27,7 +28,6 @@ export default class Common {
         accept: 'application/vnd.keldoc-v1+json',
         authorization: this.configuration.auth_token,
       },
-      validateStatus: (status) => Common.httpStatus(status),
     };
   }
 
@@ -35,7 +35,7 @@ export default class Common {
     return new Promise((resolve, reject) => {
       axios.get(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
-        .catch((error) => reject(error));
+        .catch((error) => reject(Common.httpStatus(error.response)));
     });
   }
 
@@ -43,7 +43,7 @@ export default class Common {
     return new Promise((resolve, reject) => {
       axios.post(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
-        .catch((error) => reject(error));
+        .catch((error) => reject(Common.httpStatus(error.response)));
     });
   }
 
@@ -51,7 +51,7 @@ export default class Common {
     return new Promise((resolve, reject) => {
       axios.put(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
-        .catch((error) => reject(error));
+        .catch((error) => reject(Common.httpStatus(error.response)));
     });
   }
 
@@ -59,20 +59,18 @@ export default class Common {
     return new Promise((resolve, reject) => {
       axios.delete(this.configuration.host + url, this.options)
         .then((response: {}) => resolve(response))
-        .catch((error) => reject(error));
+        .catch((error) => reject(Common.httpStatus(error.response)));
     });
   }
 
-  static httpStatus(status): Promise<any> {
-    return new Promise((resolve) => {
-      if (status === 400) throw new BadRequest();
-      else if (status === 401) throw new Unauthorized();
-      else if (status === 402) throw new OverQuota();
-      else if (status === 404) throw new NotFound();
-      else if (status === 406) throw new NotAcceptable();
-      else if (status === 422) throw new ValidationError();
-      else if (status >= 500) throw new InternalError();
-      resolve(status);
-    });
+  static httpStatus(response): any {
+    if (response.status === 400) return new BadRequest();
+    else if (response.status === 401) return new Unauthorized();
+    else if (response.status === 402) return new OverQuota();
+    else if (response.status === 404) return new NotFound();
+    else if (response.status === 406) return new NotAcceptable();
+    else if (response.status === 422) return new ValidationError();
+    else if (response.status === 500) return new InternalError();
+    return new UnknownError();
   }
 }

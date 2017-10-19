@@ -27,5 +27,10 @@ describe('Specialities', () => {
       expect(response.status).toEqual(200);
       done();
     });
+    // lazy loading motives test
+    instance.specialties.get({}).then((response) => {
+      expect(response.status).toEqual(200);
+      done();
+    });
   });
 });

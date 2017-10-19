@@ -42,6 +42,12 @@ describe('Appointments', () => {
       expect(response.status).toEqual(200);
       done();
     });
+
+    // lazy loading apointements test
+    instance.appointments.create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}).then((response) => {
+      expect(response.status).toEqual(200);
+      done();
+    });
   });
 
   it('PUT', (done) => {

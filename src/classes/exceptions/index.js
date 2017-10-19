@@ -8,6 +8,7 @@ import OverQuota from './over_quota';
 import Unauthorized from './unauthorized';
 import ValidationError from './validation_error';
 import InvalidDatetimeFormat from './invalid_datetime_format';
+import UnknownError from './unknown_error';
 
 export {
   BadRequest,
@@ -19,4 +20,5 @@ export {
   Unauthorized,
   ValidationError,
   InvalidDatetimeFormat,
+  UnknownError,
 };

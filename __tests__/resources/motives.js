@@ -36,5 +36,10 @@ describe('Motives', () => {
       expect(response.status).toEqual(200);
       done();
     });
+    // lazy loading motives test
+    instance.motives.get({}).then((response) => {
+      expect(response.status).toEqual(200);
+      done();
+    });
   });
 });

@@ -8,38 +8,44 @@ export default class Validation {
   datetimeFormat: Function;
 
   // appointment validators
-  static validateCreateAppointment(params: { start_at: string }) {
+  static validateCreateAppointment(params: { start_at: string }): Promise<any> {
     const requiredParams = ['start_at', 'agenda_id', 'state'];
-    Validation.validateMandatoryParams(requiredParams, params);
-    if (!Validation.datetimeFormat(params.start_at)) throw new InvalidDatetimeFormat();
+    return Validation.validateMandatoryParams(requiredParams, params).then(() => {
+      if (!Validation.datetimeFormat(params.start_at)) throw new InvalidDatetimeFormat();
+    });
   }
 
-  static validateUpdateAppointment(params: { start_at: string }) {
+  static validateUpdateAppointment(params: { start_at: string }): Promise<any> {
     const requiredParams = ['start_at', 'agenda_id'];
-    Validation.validateMandatoryParams(requiredParams, params);
-    if (!Validation.datetimeFormat(params.start_at)) throw new InvalidDatetimeFormat();
+    return Validation.validateMandatoryParams(requiredParams, params).then(() => {
+      if (!Validation.datetimeFormat(params.start_at)) throw new InvalidDatetimeFormat();
+    });
   }
 
   // availabilities validators
-  static validateFetchAvailabilities(params: fetchAvailabilitiesRequest) {
+  static validateFetchAvailabilities(params: fetchAvailabilitiesRequest): Promise<any> {
     const requiredParams = ['motive_id', 'start_date', 'end_date'];
-    Validation.validateMandatoryParams(requiredParams, params);
-    if (!Validation.datetimeFormat(params.start_date)) throw new InvalidDatetimeFormat();
-    if (!Validation.datetimeFormat(params.end_date)) throw new InvalidDatetimeFormat();
+    return Validation.validateMandatoryParams(requiredParams, params).then(() => {
+      if (!Validation.datetimeFormat(params.start_date)) throw new InvalidDatetimeFormat();
+      if (!Validation.datetimeFormat(params.end_date)) throw new InvalidDatetimeFormat();
+    });
   }
 
   // webhook validators
-  static validateCreateWebhook(params: {}) {
+  static validateCreateWebhook(params: {}): Promise<any> {
     const requiredParams = ['url'];
-    Validation.validateMandatoryParams(requiredParams, params);
+    return Validation.validateMandatoryParams(requiredParams, params);
   }
 
-  static validateMandatoryParams(mandatoryParams: Array<string>, requestObj: {}) {
-    const requestKeys = Object.keys(requestObj);
-    const missingParams = mandatoryParams.filter((attribute) => requestKeys.indexOf(attribute) < 0);
-    if (missingParams.length > 0) {
-      throw new MissingMandatoryParameter(`Parameter(s) ${JSON.stringify(missingParams)} missing`);
-    }
+  static validateMandatoryParams(mandatoryParams: Array<string>, requestObj: {}): Promise<any> {
+    return new Promise((resolve) => {
+      const requestKeys = Object.keys(requestObj);
+      const missingParams = mandatoryParams.filter((attribute) => requestKeys.indexOf(attribute) < 0);
+      if (missingParams.length > 0) {
+        throw new MissingMandatoryParameter(`Parameter(s) ${JSON.stringify(missingParams)} missing`);
+      }
+      resolve(true);
+    });
   }
 
   static datetimeFormat(datetime: string): boolean {

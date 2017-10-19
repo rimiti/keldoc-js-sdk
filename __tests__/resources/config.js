@@ -71,5 +71,10 @@ describe('Config', () => {
       expect(response.status).toEqual(200);
       done();
     });
+    // lazy loading motives test
+    instance.config.get().then((response) => {
+      expect(response.status).toEqual(200);
+      done();
+    });
   });
 });

@@ -30,5 +30,10 @@ describe('Agendas', () => {
       expect(response.status).toEqual(200);
       done();
     });
+    // lazy loading agenda test
+    instance.agendas.get().then((response) => {
+      expect(response.status).toEqual(200);
+      done();
+    });
   });
 });
