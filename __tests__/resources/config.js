@@ -9,6 +9,21 @@ const mock = new MockAdapter(axios);
 
 describe('Config', () => {
   beforeAll((done) => {
+    sdk.configure({
+      auth_token: '165416s5dfsds564sfdf2df',
+      host: 'http://www.example.com',
+      routes: {
+        agendas: '/agendas.json',
+        appointments: '/appointments',
+        availabilities: '/availabilities',
+        motives: '/motives.json',
+        patients: '/patients',
+        specialties: '/specialties',
+        config: '/config',
+        webhooks: '/config/webhooks',
+      },
+    });
+
     instance = sdk.create();
     done();
   });
