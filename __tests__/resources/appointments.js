@@ -53,16 +53,23 @@ describe('Appointments', () => {
           zipcode: '75007',
         },
       });
-    instance.appointments.create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
 
-    // lazy loading apointements test
-    instance.appointments.create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
+    return Promise.all([
+      instance.appointments,
+      instance.appointments,
+    ])
+      .then((instances) => {
+        expect(instances[0] === instances[1]);
+        return Promise.all([
+          instances[0].create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}),
+          instances[1].create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}),
+        ]);
+      })
+      .then((requests) => {
+        expect(requests[0].status).toEqual(200);
+        expect(requests[1].status).toEqual(200);
+        done();
+      });
   });
 
   it('PUT', (done) => {
@@ -88,17 +95,19 @@ describe('Appointments', () => {
           zipcode: '75007',
         },
       });
-    instance.appointments.update(21354, {start_at: '2001-09-23', agenda_id: '2135'}).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
+    instance.appointments.update(21354, {start_at: '2001-09-23', agenda_id: '2135'})
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        done();
+      });
   });
 
   it('DELETE', (done) => {
     mock.onDelete('http://www.example.com/appointments/21321.json').reply(200);
-    instance.appointments.remove(21321).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
+    instance.appointments.remove(21321)
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        done();
+      });
   });
 });
