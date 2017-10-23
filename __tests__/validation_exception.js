@@ -10,6 +10,7 @@ describe('Validation exceptions', () => {
     instance = sdk.create();
     done();
   });
+
   it('should throws missing mandatory parameters exception when some request param not provided', (done) => {
     instance.appointments.create({agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -19,6 +20,7 @@ describe('Validation exceptions', () => {
         done();
       });
   });
+
   it('should throws invalidate date exception when creating appointment with invalid start_at format', (done) => {
     instance.appointments.create({start_at: 'xxx', agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -28,6 +30,7 @@ describe('Validation exceptions', () => {
         done();
       });
   });
+
   it('should throws invalidate date exception when updating appointment with invalid start_at format', (done) => {
     instance.appointments.update(21354, {start_at: 'xxx', agenda_id: '2135'})
       .catch((e) => {
@@ -37,6 +40,7 @@ describe('Validation exceptions', () => {
         done();
       });
   });
+
   it('should throws invalidate date exception when fetching availabilities with invalid dates format', (done) => {
     instance.availabilities.get({
       agenda_ids: 112,
@@ -64,6 +68,7 @@ describe('Validation exceptions', () => {
         done();
       });
   });
+
   it('should get default message of MissingMandatoryParameter when not message is specified', () => {
     expect(() => {
       throw new MissingMandatoryParameter();
