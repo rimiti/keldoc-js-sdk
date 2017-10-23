@@ -125,29 +125,29 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    start_at   {Datetime} start date (required).
-    agenda_id  {Integer} Agenda ID (required).
-    state      {String} 'confirmed' or 'canceled' (required).
-    duration   {Integer} duration in seconds.
-    no_show    {Boolean} patient hasn &apos; t come.
-    patient_arrived    {Boolean} patient is waiting in the waiting room.
-    no_show_excused    {Boolean} patient hasn &apos; t come but he excused.
-    motive_id    {Integer} motive id.
-    skip_sms_confirmation    {Boolean} disable sms confirmation for consultation.
-    skip_email_confirmation  {Boolean} disable email confirmation for consultation.
-    skip_sms_reminder {Boolean} disable sms reminder for consultation.
-    skip_email_reminder {Boolean} disable email reminder for consultation.
-    patient_id {Integer} patient ID.
-    patient.first_name {String} patient firstname.
-    patient.last_name {String} patient lastname.
-    patient.maiden_name {String} patient maiden name.
-    patient.gender   {Char} 'm' or 'f'.
-    patient.phone   {String} patient phone number.
-    patient.phone2   {String} patient alternative phone number.
-    patient.email   {String} patient email address.
-    patient.street   {String} patient street number & streetnames.
-    patient.city   {String} patient city name.
-    patient.zipcode   {String} patient city zipcode.
+    start_at                  {Datetime} start date (required).
+    agenda_id                 {Integer} Agenda ID (required).
+    state                     {String} 'confirmed' or 'canceled' (required).
+    duration                  {Integer} duration in seconds.
+    no_show                   {Boolean} patient hasn &apos; t come.
+    patient_arrived           {Boolean} patient is waiting in the waiting room.
+    no_show_excused           {Boolean} patient hasn &apos; t come but he excused.
+    motive_id                 {Integer} motive id.
+    skip_sms_confirmation     {Boolean} disable sms confirmation for consultation.
+    skip_email_confirmation   {Boolean} disable email confirmation for consultation.
+    skip_sms_reminder         {Boolean} disable sms reminder for consultation.
+    skip_email_reminder       {Boolean} disable email reminder for consultation.
+    patient_id                {Integer} patient ID.
+    patient.first_name        {String} patient firstname.
+    patient.last_name         {String} patient lastname.
+    patient.maiden_name       {String} patient maiden name.
+    patient.gender            {Char} 'm' or 'f'.
+    patient.phone             {String} patient phone number.
+    patient.phone2            {String} patient alternative phone number.
+    patient.email             {String} patient email address.
+    patient.street            {String} patient street number & streetnames.
+    patient.city              {String} patient city name.
+    patient.zipcode           {String} patient city zipcode.
 ```
 
 ```javascript
@@ -164,30 +164,30 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    id   {Integer} KelDoc internal ID for appointment to update.
-    start_at   {Datetime} start date (required).
-    agenda_id  {Integer} Agenda ID (required).
-    state      {String} 'confirmed' or 'canceled' (required).
-    duration   {Integer} duration in seconds.
-    no_show    {Boolean} patient hasn &apos; t come.
-    patient_arrived    {Boolean} patient is waiting in the waiting room.
-    no_show_excused    {Boolean} patient hasn &apos; t come but he excused.
-    motive_id    {Integer} motive id.
-    skip_sms_confirmation    {Boolean} disable sms confirmation for consultation.
-    skip_email_confirmation  {Boolean} disable email confirmation for consultation.
-    skip_sms_reminder {Boolean} disable sms reminder for consultation.
-    skip_email_reminder {Boolean} disable email reminder for consultation.
-    patient_id {Integer} patient ID.
-    patient.first_name {String} patient firstname.
-    patient.last_name {String} patient lastname.
-    patient.maiden_name {String} patient maiden name.
-    patient.gender   {Char} 'm' or 'f'.
-    patient.phone   {String} patient phone number.
-    patient.phone2   {String} patient alternative phone number.
-    patient.email   {String} patient email address.
-    patient.street   {String} patient street number & streetnames.
-    patient.city   {String} patient city name.
-    patient.zipcode   {String} patient city zipcode.
+    id                        {Integer} KelDoc internal ID for appointment to update.
+    start_at                  {Datetime} start date (required).
+    agenda_id                 {Integer} Agenda ID (required).
+    state                     {String} 'confirmed' or 'canceled' (required).
+    duration                  {Integer} duration in seconds.
+    no_show                   {Boolean} patient hasn &apos; t come.
+    patient_arrived           {Boolean} patient is waiting in the waiting room.
+    no_show_excused           {Boolean} patient hasn &apos; t come but he excused.
+    motive_id                 {Integer} motive id.
+    skip_sms_confirmation     {Boolean} disable sms confirmation for consultation.
+    skip_email_confirmation   {Boolean} disable email confirmation for consultation.
+    skip_sms_reminder         {Boolean} disable sms reminder for consultation.
+    skip_email_reminder       {Boolean} disable email reminder for consultation.
+    patient_id                {Integer} patient ID.
+    patient.first_name        {String} patient firstname.
+    patient.last_name         {String} patient lastname.
+    patient.maiden_name       {String} patient maiden name.
+    patient.gender            {Char} 'm' or 'f'.
+    patient.phone             {String} patient phone number.
+    patient.phone2            {String} patient alternative phone number.
+    patient.email             {String} patient email address.
+    patient.street            {String} patient street number & streetnames.
+    patient.city              {String} patient city name.
+    patient.zipcode           {String} patient city zipcode.
 ```
 
 ```javascript
@@ -204,7 +204,7 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    id   {Integer} KelDoc internal ID for appointment to remove.
+    id          {Integer} KelDoc internal ID for appointment to remove.
 ```
 
 ```javascript
@@ -284,15 +284,15 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    first_name {String} patient firstname.
-    last_name {String} patient lastname.
+    first_name  {String} patient firstname.
+    last_name   {String} patient lastname.
     maiden_name {String} patient maiden name.
-    gender   {Char} 'm' or 'f'.
-    phone   {String} patient phone number.
-    email   {String} patient email address.
-    street   {String} patient street number & streetnames.
-    city   {String} patient city name.
-    zipcode   {String} patient city zipcode.
+    gender      {Char} 'm' or 'f'.
+    phone       {String} patient phone number.
+    email       {String} patient email address.
+    street      {String} patient street number & streetnames.
+    city        {String} patient city name.
+    zipcode     {String} patient city zipcode.
 ```
 
 ```javascript
@@ -314,16 +314,16 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    id   {Integer} KelDoc internal ID for patient to update.
-    first_name {String} patient firstname.
-    last_name {String} patient lastname.
+    id          {Integer} KelDoc internal ID for patient to update.
+    first_name  {String} patient firstname.
+    last_name   {String} patient lastname.
     maiden_name {String} patient maiden name.
-    gender   {Char} 'm' or 'f'.
-    phone   {String} patient phone number.
-    email   {String} patient email address.
-    street   {String} patient street number & streetnames.
-    city   {String} patient city name.
-    zipcode   {String} patient city zipcode.
+    gender      {Char} 'm' or 'f'.
+    phone       {String} patient phone number.
+    email       {String} patient email address.
+    street      {String} patient street number & streetnames.
+    city        {String} patient city name.
+    zipcode     {String} patient city zipcode.
 ```
 
 ```javascript
@@ -365,7 +365,7 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url   {String} Webhook url.
+    url         {String} Webhook url.
 ```
 
 ```javascript
@@ -382,7 +382,7 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url   {String} Webhook url.
+    url         {String} Webhook url.
 ```
 
 ```javascript
@@ -399,7 +399,7 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url   {String} Webhook url.
+    url         {String} Webhook url.
 ```
 
 ```javascript
@@ -435,8 +435,8 @@ MIT © [Dimitri DO BAIRRO](https://github.com/rimiti/keldoc-js-sdk/blob/master/L
 [dev-dependencies]: https://david-dm.org/rimiti/keldoc-js-sdk?type=dev
 [security-version-badge]: https://nodesecurity.io/orgs/dim-solution/projects/e65e3a46-4110-4de2-ae92-1584b59d3ff0/badge
 [security-version]: https://nodesecurity.io/orgs/dim-solution/projects/e65e3a46-4110-4de2-ae92-1584b59d3ff0
-[codeclimate-score-badge]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/badges/gpa.svg
-[codeclimate-score]: https://codeclimate.com/github/rimiti/keldoc-js-sdk
+[codeclimate-score-badge]: https://api.codeclimate.com/v1/badges/7951ca62e66be94eba69/maintainability
+[codeclimate-score]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/maintainability
 [coveralls-coverage-badge]: https://coveralls.io/repos/github/rimiti/keldoc-js-sdk/badge.svg
 [coveralls-coverage]: https://coveralls.io/github/rimiti/keldoc-js-sdk
 [codeclimate-issues-badge]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/badges/issue_count.svg
