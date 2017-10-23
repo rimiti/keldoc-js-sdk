@@ -3,12 +3,12 @@ export default class Exception {
   ename: string;
   emessage: string;
 
-  get name(): string {
-    return this.ename;
+  constructor() {
+    this.ename = this.constructor.name;
   }
 
-  set name(value: string) {
-    this.ename = value;
+  get name(): string {
+    return this.ename;
   }
 
   get message(): string {
