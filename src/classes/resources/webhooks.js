@@ -4,9 +4,9 @@ import Validation from '../validation';
 
 export default class Webhooks extends Common {
   create(body: { url: string }): Promise<any> {
-    Validation.validateCreateWebhook(body);
     const url = `${this.configuration.routes.webhooks}`;
-    return super.postRequest(url, body);
+    return Validation.validateCreateWebhook(body)
+      .then(() => super.postRequest(url, body));
   }
 
   update(body: {}): Promise<any> {
