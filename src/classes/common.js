@@ -14,7 +14,6 @@ import {
 } from './exceptions';
 
 export default class Common {
-  httpStatus: Function;
   validator: Validation;
   configuration: Config;
   options: {};
@@ -31,7 +30,7 @@ export default class Common {
     };
   }
 
-  getRequest(url: string, body: any) : Promise<any> {
+  getRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.get(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
@@ -39,7 +38,7 @@ export default class Common {
     });
   }
 
-  postRequest(url: string, body: any) : Promise<any> {
+  postRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.post(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
@@ -47,7 +46,7 @@ export default class Common {
     });
   }
 
-  putRequest(url: string, body: any) : Promise<any> {
+  putRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.put(this.configuration.host + url, body, this.options)
         .then((response: {}) => resolve(response))
@@ -55,7 +54,7 @@ export default class Common {
     });
   }
 
-  deleteRequest(url: string) : Promise<any> {
+  deleteRequest(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.delete(this.configuration.host + url, this.options)
         .then((response: {}) => resolve(response))
