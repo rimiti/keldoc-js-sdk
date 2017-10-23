@@ -30,6 +30,36 @@ describe('Avalabilities', () => {
 
   afterEach(() => mock.reset());
 
+  it('Lazy loading', (done) => {
+    mock.onGet('http://www.example.com/availabilities').reply(200);
+    return Promise.all([
+      instance.availabilities,
+      instance.availabilities,
+    ])
+      .then((instances) => {
+        expect(instances[0] === instances[1]);
+        return Promise.all([
+          instances[0].get({
+            agenda_ids: 112,
+            end_date: '2017-09-18',
+            start_date: '2017-09-18',
+            motive_id: '366',
+          }),
+          instances[1].get({
+            agenda_ids: 112,
+            end_date: '2017-09-18',
+            start_date: '2017-09-18',
+            motive_id: '366',
+          }),
+        ]);
+      })
+      .then((requests) => {
+        expect(requests[0].status).toEqual(200);
+        expect(requests[1].status).toEqual(200);
+        done();
+      });
+  });
+
   it('GET', (done) => {
     mock.onGet('http://www.example.com/availabilities', {
       agenda_ids: 112,
@@ -52,20 +82,10 @@ describe('Avalabilities', () => {
       end_date: '2017-09-18',
       start_date: '2017-09-18',
       motive_id: '366',
-    }).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
-
-    // lazy loading availabities test
-    instance.availabilities.get({
-      agenda_ids: 112,
-      end_date: '2017-09-18',
-      start_date: '2017-09-18',
-      motive_id: '366',
-    }).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
+    })
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        done();
+      });
   });
 });

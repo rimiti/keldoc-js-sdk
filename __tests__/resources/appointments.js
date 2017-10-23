@@ -30,6 +30,26 @@ describe('Appointments', () => {
 
   afterEach(() => mock.reset());
 
+  it('Lazy loading', (done) => {
+    mock.onPost('http://www.example.com/appointments').reply(200);
+    return Promise.all([
+      instance.appointments,
+      instance.appointments,
+    ])
+      .then((instances) => {
+        expect(instances[0] === instances[1]);
+        return Promise.all([
+          instances[0].create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}),
+          instances[1].create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}),
+        ]);
+      })
+      .then((requests) => {
+        expect(requests[0].status).toEqual(200);
+        expect(requests[1].status).toEqual(200);
+        done();
+      });
+  });
+
   it('POST', (done) => {
     mock.onPost('http://www.example.com/appointments', {start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
       .reply(200, {
@@ -53,21 +73,9 @@ describe('Appointments', () => {
           zipcode: '75007',
         },
       });
-
-    return Promise.all([
-      instance.appointments,
-      instance.appointments,
-    ])
-      .then((instances) => {
-        expect(instances[0] === instances[1]);
-        return Promise.all([
-          instances[0].create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}),
-          instances[1].create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'}),
-        ]);
-      })
-      .then((requests) => {
-        expect(requests[0].status).toEqual(200);
-        expect(requests[1].status).toEqual(200);
+    instance.appointments.create({start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
+      .then((response) => {
+        expect(response.status).toEqual(200);
         done();
       });
   });

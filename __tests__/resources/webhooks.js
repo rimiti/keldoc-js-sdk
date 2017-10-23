@@ -30,39 +30,52 @@ describe('Config', () => {
 
   afterEach(() => mock.reset());
 
+  it('Lazy loading', (done) => {
+    mock.onPost('http://www.example.com/config/webhooks').reply(200);
+    return Promise.all([
+      instance.webhooks,
+      instance.webhooks,
+    ])
+      .then((instances) => {
+        expect(instances[0] === instances[1]);
+        return Promise.all([
+          instances[0].create({url: 'http://test.webhook.com'}),
+          instances[1].create({url: 'http://test.webhook.com'}),
+        ]);
+      })
+      .then((requests) => {
+        expect(requests[0].status).toEqual(200);
+        expect(requests[1].status).toEqual(200);
+        done();
+      });
+  });
+
   it('POST', (done) => {
     mock.onPost('http://www.example.com/config/webhooks', {url: 'http://test.webhook.com'})
-      .reply(200, {
-        url: 'https://partner.com/callback',
+      .reply(200, {url: 'https://partner.com/callback'});
+    instance.webhooks.create({url: 'http://test.webhook.com'})
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        done();
       });
-    instance.webhooks.create({url: 'http://test.webhook.com'}).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
-    // lazy loading motives test
-    instance.webhooks.create({url: 'http://test.webhook.com'}).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
   });
 
   it('PUT', (done) => {
-    mock.onPut('http://www.example.com/config/webhooks', {})
-      .reply(200, {
-        url: 'https://partner.com/callback',
+    mock.onPut('http://www.example.com/config/webhooks')
+      .reply(200, {url: 'https://partner.com/callback'});
+    instance.webhooks.update()
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        done();
       });
-    instance.webhooks.update({}).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
   });
 
   it('DELETE', (done) => {
-    mock.onDelete('http://www.example.com/config/webhooks')
-      .reply(200, {});
-    instance.webhooks.remove({}).then((response) => {
-      expect(response.status).toEqual(200);
-      done();
-    });
+    mock.onDelete('http://www.example.com/config/webhooks').reply(200);
+    instance.webhooks.remove()
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        done();
+      });
   });
 });
