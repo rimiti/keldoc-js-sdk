@@ -23,6 +23,10 @@ export default class SDK {
     this.configuration = configuration;
   }
 
+  /**
+   * @description Returns Agendas singleton.
+   * @return {Agendas}
+   */
   get agendas(): Agendas {
     if (!this.agendasClass) {
       this.agendasClass = new Agendas(this.configuration);
@@ -30,6 +34,10 @@ export default class SDK {
     return this.agendasClass;
   }
 
+  /**
+   * @description Returns Appointments singleton.
+   * @return {Appointments}
+   */
   get appointments(): Appointments {
     if (!this.appointmentsClass) {
       this.appointmentsClass = new Appointments(this.configuration);
@@ -37,6 +45,10 @@ export default class SDK {
     return this.appointmentsClass;
   }
 
+  /**
+   * @description Returns Availabilities singleton.
+   * @return {Availabilities}
+   */
   get availabilities(): Availabilities {
     if (!this.availabilitiesClass) {
       this.availabilitiesClass = new Availabilities(this.configuration);
@@ -44,6 +56,10 @@ export default class SDK {
     return this.availabilitiesClass;
   }
 
+  /**
+   * @description Returns Motives singleton.
+   * @return {Motives}
+   */
   get motives(): Motives {
     if (!this.motivesClass) {
       this.motivesClass = new Motives(this.configuration);
@@ -51,6 +67,10 @@ export default class SDK {
     return this.motivesClass;
   }
 
+  /**
+   * @description Returns Patients singleton.
+   * @return {Patients}
+   */
   get patients(): Patients {
     if (!this.patientsClass) {
       this.patientsClass = new Patients(this.configuration);
@@ -58,6 +78,10 @@ export default class SDK {
     return this.patientsClass;
   }
 
+  /**
+   * @description Returns Specialties singleton.
+   * @return {Specialties}
+   */
   get specialties(): Specialties {
     if (!this.specialtiesClass) {
       this.specialtiesClass = new Specialties(this.configuration);
@@ -65,6 +89,10 @@ export default class SDK {
     return this.specialtiesClass;
   }
 
+  /**
+   * @description Returns Config singleton.
+   * @return {Config}
+   */
   get config(): Config {
     if (!this.configClass) {
       this.configClass = new Config(this.configuration);
@@ -72,6 +100,10 @@ export default class SDK {
     return this.configClass;
   }
 
+  /**
+   * @description Returns Webhooks singleton.
+   * @return {Webhooks}
+   */
   get webhooks(): Webhooks {
     if (!this.webhooksClass) {
       this.webhooksClass = new Webhooks(this.configuration);

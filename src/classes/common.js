@@ -30,6 +30,12 @@ export default class Common {
     };
   }
 
+  /**
+   * @description Runs GET request.
+   * @param url
+   * @param body
+   * @return {Promise}
+   */
   getRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.get(this.configuration.host + url, body, this.options)
@@ -38,6 +44,12 @@ export default class Common {
     });
   }
 
+  /**
+   * @description Runs POST request.
+   * @param url
+   * @param body
+   * @return {Promise}
+   */
   postRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.post(this.configuration.host + url, body, this.options)
@@ -46,6 +58,12 @@ export default class Common {
     });
   }
 
+  /**
+   * @description Runs PUT request.
+   * @param url
+   * @param body
+   * @return {Promise}
+   */
   putRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.put(this.configuration.host + url, body, this.options)
@@ -54,6 +72,11 @@ export default class Common {
     });
   }
 
+  /**
+   * @description Runs DELETE request.
+   * @param url
+   * @return {Promise}
+   */
   deleteRequest(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
       axios.delete(this.configuration.host + url, this.options)
@@ -62,6 +85,11 @@ export default class Common {
     });
   }
 
+  /**
+   * @description Returns exception for non 2xx http codes.
+   * @param response
+   * @return {*}
+   */
   static httpStatus(response): any {
     if (response.status === 400) return new BadRequest();
     else if (response.status === 401) return new Unauthorized();
