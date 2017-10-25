@@ -1,7 +1,7 @@
 // @flow
 import jsonOverride from 'json-override';
-import SDK from '../classes';
-import type {Config} from '../classes/types';
+import SDK from './classes';
+import type {Config} from './classes/types';
 
 let configuration = {
   auth_token: '165416s5dfsds564sfdf2df',
