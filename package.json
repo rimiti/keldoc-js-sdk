@@ -1,6 +1,6 @@
 {
   "name": "keldoc-js-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Keldoc Javascript SDK",
   "license": "MIT",
   "main": "dist/src/index.js",
@@ -14,8 +14,8 @@
     "test": "npm run test-only",
     "test-only": "jest --coverage",
     "test:watch": "jest --watch",
-    "build": "babel src/**/*.js src/*.js -d dist",
-    "build:watch": "babel --watch src/**/*.js src/*.js -d dist"
+    "build": "babel --source-maps src/**/*.js src/**/**/*.js src/*.js -d dist",
+    "build:watch": "babel --source-maps --watch src/**/*.js src/**/**/*.js src/*.js -d dist"
   },
   "repository": {
     "type": "git",
@@ -65,6 +65,14 @@
     "jest": "~21.2.1"
   },
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
     "testEnvironment": "node",
     "moduleFileExtensions": [
       "js"
