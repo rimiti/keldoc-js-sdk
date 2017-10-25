@@ -1,5 +1,5 @@
 // @flow
-import * as sdk from '../src/lib';
+import * as sdk from '../src';
 import {MissingMandatoryParameter, InvalidDatetimeFormat} from '../src/classes/exceptions';
 
 let instance = {};
