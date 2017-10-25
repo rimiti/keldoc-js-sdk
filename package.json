@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "Keldoc Javascript SDK",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "clean": "rm -rf coverage dist tmp",
     "lint": "eslint .",
     "postlint": "npm run typecheck",
     "typecheck": "flow check",
     "pretest": "npm run lint",
+    "prepare": "npm run build",
     "test": "npm run test-only",
     "test-only": "jest --coverage",
     "test:watch": "jest --watch",
-    "build": "babel src/**/*.js -d dist",
+    "build": "babel src/**/*.js src/*.js -d dist",
     "build:watch": "babel --watch src/**/*.js -d dist"
   },
   "repository": {
