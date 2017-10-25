@@ -1,6 +1,6 @@
 {
   "name": "keldoc-js-sdk",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Keldoc Javascript SDK",
   "license": "MIT",
   "main": "dist/src/index.js",
@@ -15,7 +15,7 @@
     "test-only": "jest --coverage",
     "test:watch": "jest --watch",
     "build": "babel src/**/*.js src/*.js -d dist",
-    "build:watch": "babel --watch src/**/*.js -d dist"
+    "build:watch": "babel --watch src/**/*.js src/*.js -d dist"
   },
   "repository": {
     "type": "git",
