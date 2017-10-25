@@ -1,6 +1,6 @@
 {
   "name": "keldoc-js-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Keldoc Javascript SDK",
   "license": "MIT",
   "main": "dist/src/index.js",
@@ -10,7 +10,7 @@
     "postlint": "npm run typecheck",
     "typecheck": "flow check",
     "pretest": "npm run lint",
-    "prepare": "npm run build",
+    "prepare": "npm run test && npm run build",
     "test": "npm run test-only",
     "test-only": "jest --coverage",
     "test:watch": "jest --watch",
