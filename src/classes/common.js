@@ -21,12 +21,10 @@ export default class Common {
   constructor(configuration: Config) {
     this.validator = new Validation();
     this.configuration = configuration;
-    this.options = {
-      headers: {
-        'content-type': 'application/json',
-        accept: 'application/vnd.keldoc-v1+json',
-        authorization: this.configuration.auth_token,
-      },
+    axios.defaults.headers.common = {
+      Authorization: this.configuration.auth_token,
+      Accept: 'application/vnd.keldoc-v1+json',
+      'Content-Type': 'application/json',
     };
   }
 
@@ -38,7 +36,7 @@ export default class Common {
    */
   getRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.get(this.configuration.host + url, body, this.options)
+      axios.get(this.configuration.host + url, body)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
     });
@@ -52,7 +50,7 @@ export default class Common {
    */
   postRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.post(this.configuration.host + url, body, this.options)
+      axios.post(this.configuration.host + url, body)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
     });
@@ -66,7 +64,7 @@ export default class Common {
    */
   putRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.put(this.configuration.host + url, body, this.options)
+      axios.put(this.configuration.host + url, body)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
     });
@@ -79,7 +77,7 @@ export default class Common {
    */
   deleteRequest(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.delete(this.configuration.host + url, this.options)
+      axios.delete(this.configuration.host + url)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
     });

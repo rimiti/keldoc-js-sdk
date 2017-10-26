@@ -59,17 +59,7 @@ import * as sdk from 'keldoc-js-sdk'
 
 sdk.configure({
   auth_token: '165416s5dfsds564sfdf2df',
-  host: 'http://www.example.com',
-  routes: {
-    agendas: '/agendas.json',
-    appointments: '/appointments',
-    availabilities: '/availabilities',
-    motives: '/motives.json',
-    patients: '/patients',
-    specialties: '/specialties',
-    config: '/config',
-    webhooks: '/config/webhooks',
-  },
+  host: 'http://www.example.com'
 })
 
 const keldoc = sdk.create()
