@@ -8,7 +8,7 @@ export default class Patients extends Common {
    * @return {Promise.<any>}
    */
   create(body: {}): Promise<any> {
-    const url = `${this.configuration.routes.patients}`;
+    const url = `${this.configuration.routes.patients}.json`;
     return super.postRequest(url, body);
   }
 
@@ -19,7 +19,7 @@ export default class Patients extends Common {
    * @return {Promise.<any>}
    */
   update(id: number, body: {}): Promise<any> {
-    const url = `${this.configuration.routes.patients}/${id}`;
+    const url = `${this.configuration.routes.patients}/${id}.json`;
     return super.putRequest(url, body);
   }
 }

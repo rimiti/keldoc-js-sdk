@@ -7,10 +7,10 @@ let configuration = {
   auth_token: '165416s5dfsds564sfdf2df',
   host: 'http://www.example.com',
   routes: {
-    agendas: '/agendas.json',
+    agendas: '/agendas',
     appointments: '/appointments',
     availabilities: '/availabilities',
-    motives: '/motives.json',
+    motives: '/motives',
     patients: '/patients',
     specialties: '/specialties',
     config: '/config',

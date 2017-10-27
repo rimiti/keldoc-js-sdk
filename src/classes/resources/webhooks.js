@@ -9,7 +9,7 @@ export default class Webhooks extends Common {
    * @return {Promise.<any>}
    */
   create(body: { url: string }): Promise<any> {
-    const url = `${this.configuration.routes.webhooks}`;
+    const url = `${this.configuration.routes.config}`;
     return Validation.validateCreateWebhook(body)
       .then(() => super.postRequest(url, body));
   }

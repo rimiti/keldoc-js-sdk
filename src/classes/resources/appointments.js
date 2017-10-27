@@ -9,7 +9,7 @@ export default class Appointments extends Common {
    * @return {Promise.<any>}
    */
   create(body: { start_at: string }): Promise<any> {
-    const url = `${this.configuration.routes.appointments}`;
+    const url = `${this.configuration.routes.appointments}.json`;
     return Validation.validateCreateAppointment(body)
       .then(() => super.postRequest(url, body));
   }

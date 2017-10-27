@@ -7,7 +7,7 @@ export default class Motives extends Common {
    * @return {Promise.<any>}
    */
   get(): Promise<any> {
-    const url = `${this.configuration.routes.motives}`;
+    const url = `${this.configuration.routes.motives}.json`;
     return super.getRequest(url);
   }
 }
