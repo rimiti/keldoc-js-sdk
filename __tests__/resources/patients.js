@@ -21,7 +21,7 @@ describe('Patients', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onPost('http://www.example.com/patients').reply(200);
+    mock.onPost('http://www.example.com/patients.json').reply(200);
     return Promise.all([
       instance.patients,
       instance.patients,
@@ -41,7 +41,7 @@ describe('Patients', () => {
   });
 
   it('POST', (done) => {
-    mock.onPost('http://www.example.com/patients')
+    mock.onPost('http://www.example.com/patients.json')
       .reply(200, {
         first_name: 'Julien',
         last_name: 'Flandrin',
@@ -61,7 +61,7 @@ describe('Patients', () => {
   });
 
   it('PUT', (done) => {
-    mock.onPut('http://www.example.com/patients/12026')
+    mock.onPut('http://www.example.com/patients/12026.json')
       .reply(200, {
         first_name: 'Julien',
         last_name: 'Flandrin',

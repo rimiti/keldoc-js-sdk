@@ -21,7 +21,7 @@ describe('Appointments', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onPost('http://www.example.com/appointments').reply(200);
+    mock.onPost('http://www.example.com/appointments.json').reply(200);
     return Promise.all([
       instance.appointments,
       instance.appointments,
@@ -41,7 +41,7 @@ describe('Appointments', () => {
   });
 
   it('POST', (done) => {
-    mock.onPost('http://www.example.com/appointments', {start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments.json', {start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
       .reply(200, {
         start_at: '2017-09-18T17:30:00.000+02:00',
         duration: 1800,

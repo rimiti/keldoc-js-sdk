@@ -21,7 +21,7 @@ describe('Config', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onPost('http://www.example.com/config/webhooks').reply(200);
+    mock.onPost('http://www.example.com/config').reply(200);
     return Promise.all([
       instance.webhooks,
       instance.webhooks,
@@ -41,7 +41,7 @@ describe('Config', () => {
   });
 
   it('POST', (done) => {
-    mock.onPost('http://www.example.com/config/webhooks', {url: 'http://test.webhook.com'})
+    mock.onPost('http://www.example.com/config', {url: 'http://test.webhook.com'})
       .reply(200, {url: 'https://partner.com/callback'});
     instance.webhooks.create({url: 'http://test.webhook.com'})
       .then((response) => {
