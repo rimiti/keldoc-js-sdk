@@ -42,6 +42,16 @@ export default class Validation {
   }
 
   /**
+   * @description Available slots validator.
+   * @param params
+   * @return {Promise<any>}
+   */
+  static validateFetchAvailableSlots(params: fetchAvailableSlotsRequest): Promise<any> {
+    const requiredParams = ['agenda_id'];
+    return Validation.validateMandatoryParams(requiredParams, params);
+  }
+
+  /**
    * @description Webhook validators.
    * @param params
    * @return {Promise<any>}
