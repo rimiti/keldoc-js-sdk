@@ -88,7 +88,7 @@ export default class Common {
    * @param response
    * @return {*}
    */
-  static httpStatus(response): any {
+  static httpStatus(response: {}): any {
     if (response.status === 400) return new BadRequest();
     else if (response.status === 401) return new Unauthorized();
     else if (response.status === 402) return new OverQuota();
