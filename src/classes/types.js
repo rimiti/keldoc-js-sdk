@@ -17,5 +17,11 @@ export type Config = {
 export type fetchAvailabilitiesRequest = {
   motive_id: string,
   start_date: string,
-  end_date: string
+  end_date: string,
+}
+
+export type fetchAvailableSlotsRequest = {
+  agenda_id: string,
+  start_date: string,
+  end_date: string,
 }
