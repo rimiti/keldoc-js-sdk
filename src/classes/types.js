@@ -4,6 +4,7 @@ export type Config = {
   auth_token: string,
   routes: {
     availabilities: string,
+    available_slots: string,
     agendas: string,
     config: string,
     motives: string,
