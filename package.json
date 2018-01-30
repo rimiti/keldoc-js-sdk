@@ -1,6 +1,6 @@
 {
   "name": "keldoc-js-sdk",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Keldoc Javascript SDK",
   "license": "MIT",
   "main": "dist/src/index.js",
