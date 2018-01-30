@@ -2,6 +2,7 @@
 import Agendas from './resources/agendas';
 import Appointments from './resources/appointments';
 import Availabilities from './resources/availabilities';
+import AvailableSlots from './resources/available_slots';
 import Motives from './resources/motives';
 import Patients from './resources/patients';
 import Specialties from './resources/specialties';
@@ -18,6 +19,7 @@ export default class SDK {
   specialtiesClass: Specialties;
   configClass: Config;
   webhooksClass: Webhooks;
+  availableSlotsClass: AvailableSlots;
 
   constructor(configuration: {}) {
     this.configuration = configuration;
@@ -54,6 +56,17 @@ export default class SDK {
       this.availabilitiesClass = new Availabilities(this.configuration);
     }
     return this.availabilitiesClass;
+  }
+
+  /**
+   * @description Returns AvailableSlots singleton.
+   * @return {AvailableSlots}
+   */
+  get availableSlots(): AvailableSlots {
+    if (!this.availableSlotsClass) {
+      this.availableSlotsClass = new AvailableSlots(this.configuration);
+    }
+    return this.availableSlotsClass;
   }
 
   /**

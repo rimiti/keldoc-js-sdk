@@ -10,6 +10,7 @@ let configuration = {
     agendas: '/agendas',
     appointments: '/appointments',
     availabilities: '/availabilities',
+    available_slots: '/available_slots',
     motives: '/motives',
     patients: '/patients',
     specialties: '/specialties',
