@@ -27,6 +27,7 @@ $ npm install keldoc-js-sdk --save
 - Agendas
 - Appointments
 - Availabilities
+- Available slots
 - Config
 - Motives
 - Patients
@@ -40,6 +41,7 @@ $ npm install keldoc-js-sdk --save
 * [appointments.update()](#updateAppointment)
 * [appointments.remove()](#removeAppointment)
 * [availabilities.get()](#getAvailabilities)
+* [availableSlots.get()](#getAvailableSlots)
 * [config.get()](#getConfig)
 * [motives.get()](#getMotives)
 * [patients.create()](#createPatient)
@@ -227,6 +229,33 @@ const keldoc = sdk.create();
       end_date: '2017-09-17',
       start_date: '2017-09-18',
       motive_id: '366',
+    })
+      .then((response) => {
+        //use your response
+      });
+```
+
+---------------------------------------
+
+<a name="getAvailableSlots"/>
+
+### Available slots
+
+* Fetch available slots for agendas. Maximum duration between start date and end date is 2 months (default is 2 months from now).
+* When motive_ids is [], it means the available slot is for all motives.
+  __Arguments__
+
+```javascript
+    agenda_id   {Array} ID of agenda.
+    start_date  {Datetime} start date.
+    end_date    {Datetime} end date.
+```
+
+```javascript
+    keldoc.availableSlots.get({
+      agenda_id: 112,
+      start_date: '2017-09-18',
+      end_date: '2017-09-17',
     })
       .then((response) => {
         //use your response
