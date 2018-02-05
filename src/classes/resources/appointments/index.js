@@ -1,6 +1,6 @@
 // @flow
-import Common from '../common';
-import Validation from '../validation';
+import Common from '../../common';
+import Validation from '../../validation';
 
 export default class Appointments extends Common {
   /**

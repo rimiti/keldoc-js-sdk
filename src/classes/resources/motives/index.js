@@ -1,5 +1,5 @@
 // @flow
-import Common from '../common';
+import Common from '../../common';
 
 export default class Motives extends Common {
   /**
