@@ -10,12 +10,12 @@ let configuration = {
     agendas: '/agendas',
     appointments: '/appointments',
     availabilities: '/availabilities',
-    available_slots: '/available_slots',
+    availableSlots: '/available_slots',
     motives: '/motives',
     patients: '/patients',
     specialties: '/specialties',
     config: '/config',
-    webhooks: '/config/webhooks',
+    configWebhooks: '/config/webhooks',
   },
 };
 
