@@ -1,7 +1,7 @@
 // @flow
-import Common from '../common';
-import Validation from '../validation';
-import type {fetchAvailableSlotsRequest} from '../types';
+import Common from '../../common';
+import Validation from '../../validation';
+import type {fetchAvailableSlotsRequest} from '../../types';
 
 export default class AvailableSlots extends Common {
   /**
