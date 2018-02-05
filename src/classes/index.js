@@ -5,7 +5,7 @@ import Availabilities from './resources/availabilities';
 import AvailableSlots from './resources/available_slots';
 import Motives from './resources/motives';
 import Patients from './resources/patients';
-import Specialties from './resources/specialities';
+import Specialties from './resources/specialties';
 import Config from './resources/config';
 import ConfigWebhooks from './resources/config/webhooks';
 
