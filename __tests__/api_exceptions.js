@@ -142,7 +142,7 @@ describe('API Exceptions', () => {
 
   it('should throws Unknown error for delete request', (done) => {
     mock.onDelete('http://www.example.com/config/webhooks').reply(100);
-    instance.webhooks.remove()
+    instance.configWebhooks.remove()
       .catch((e) => {
         expect(e).toBeInstanceOf(UnknownError);
         expect(e.name).toEqual('UnknownError');
