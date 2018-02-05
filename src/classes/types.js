@@ -4,13 +4,13 @@ export type Config = {
   auth_token: string,
   routes: {
     availabilities: string,
-    available_slots: string,
+    availableSlots: string,
     agendas: string,
     config: string,
     motives: string,
     patients: string,
     specialties: string,
-    webhooks: string,
+    configWebhooks: string,
     appointments: string,
   }
 }
