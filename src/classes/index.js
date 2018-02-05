@@ -7,7 +7,7 @@ import Motives from './resources/motives';
 import Patients from './resources/patients';
 import Specialties from './resources/specialties';
 import Config from './resources/config';
-import Webhooks from './resources/webhooks';
+import ConfigWebhooks from './resources/config/webhooks';
 
 export default class SDK {
   configuration: Object;
@@ -18,7 +18,7 @@ export default class SDK {
   patientsClass: Patients;
   specialtiesClass: Specialties;
   configClass: Config;
-  webhooksClass: Webhooks;
+  configWebhooksClass: ConfigWebhooks;
   availableSlotsClass: AvailableSlots;
 
   constructor(configuration: {}) {
@@ -114,13 +114,13 @@ export default class SDK {
   }
 
   /**
-   * @description Returns Webhooks singleton.
-   * @return {Webhooks}
+   * @description Returns ConfigWebhooks singleton.
+   * @return {ConfigWebhooks}
    */
-  get webhooks(): Webhooks {
-    if (!this.webhooksClass) {
-      this.webhooksClass = new Webhooks(this.configuration);
+  get configWebhooks(): ConfigWebhooks {
+    if (!this.configWebhooksClass) {
+      this.configWebhooksClass = new ConfigWebhooks(this.configuration);
     }
-    return this.webhooksClass;
+    return this.configWebhooksClass;
   }
 }

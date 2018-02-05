@@ -10,7 +10,7 @@ export default class AvailableSlots extends Common {
    * @return {Promise.<any>}
    */
   get(body: fetchAvailableSlotsRequest): Promise<any> {
-    const url = `${this.configuration.routes.available_slots}`;
+    const url = `${this.configuration.routes.availableSlots}`;
     return Validation.validateFetchAvailableSlots(body)
       .then(() => super.getRequest(url, body));
   }

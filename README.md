@@ -29,10 +29,10 @@ $ npm install keldoc-js-sdk --save
 - Availabilities
 - Available slots
 - Config
+- ConfigWebhooks
 - Motives
 - Patients
 - Specialities
-- Webhooks
 
 ## Documentation
 
@@ -47,9 +47,9 @@ $ npm install keldoc-js-sdk --save
 * [patients.create()](#createPatient)
 * [patients.update()](#updatePatient)
 * [specialties.get()](#getSpecialties)
-* [webhooks.create()](#createWebhooks)
-* [webhooks.update()](#updateWebhooks)
-* [webhooks.remove()](#removeWebhooks)
+* [configWebhooks.create()](#createConfigWebhooks)
+* [configWebhooks.update()](#updateConfigWebhooks)
+* [configWebhooks.remove()](#removeConfigWebhooks)
 
 ## Examples
 
@@ -78,12 +78,12 @@ sdk.configure({
     agendas: '/agendas.json',
     appointments: '/appointments',
     availabilities: '/availabilities',
+    availableSlots: '/available_slots',
     motives: '/motives.json',
     patients: '/patients',
     specialties: '/specialties',
     config: '/config',
-    webhooks: '/config/webhooks',
-  },
+    configWebhooks: '/config/webhooks' },
 });
 
 const keldoc = sdk.create();
@@ -375,9 +375,9 @@ const keldoc = sdk.create();
 
 ---------------------------------------
 
-<a name="createWebhooks"/>
+<a name="createConfigWebhooks"/>
 
-### Webhooks
+### ConfigWebhooks
 
 * Create account webhook
 
@@ -388,13 +388,13 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.webhooks.create({url: 'http://test.webhook.com'})
+    keldoc.configWebhooks.create({url: 'http://test.webhook.com'})
       .then((response) => {
         // use your response
       });
 ```
 
-<a name="updateWebhooks"/>
+<a name="updateConfigWebhooks"/>
 
 * Update account webhook
 
@@ -405,13 +405,13 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.webhooks.update({url: 'http://test.webhook.com'})
+    keldoc.configWebhooks.update({url: 'http://test.webhook.com'})
       .then((response) => {
         // use your response
       });
 ```
 
-<a name="removeWebhooks"/>
+<a name="removeConfigWebhooks"/>
 
 * Delete account webhook
 
@@ -422,7 +422,7 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.webhooks.remove()
+    keldoc.configWebhooks()
       .then((response) => {
         // use your response
       });

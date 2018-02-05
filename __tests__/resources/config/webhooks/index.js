@@ -1,7 +1,7 @@
 // @flow
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import * as sdk from '../../src';
+import * as sdk from '../../../../src';
 
 jest.setTimeout(10000);
 let instance = {};
@@ -21,10 +21,10 @@ describe('Config', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onPost('http://www.example.com/config').reply(200);
+    mock.onPost('http://www.example.com/config/webhooks').reply(200);
     return Promise.all([
-      instance.webhooks,
-      instance.webhooks,
+      instance.configWebhooks,
+      instance.configWebhooks,
     ])
       .then((instances) => {
         expect(instances[0] === instances[1]);
@@ -41,9 +41,9 @@ describe('Config', () => {
   });
 
   it('POST', (done) => {
-    mock.onPost('http://www.example.com/config', {url: 'http://test.webhook.com'})
+    mock.onPost('http://www.example.com/config/webhooks', {url: 'http://test.webhook.com'})
       .reply(200, {url: 'https://partner.com/callback'});
-    instance.webhooks.create({url: 'http://test.webhook.com'})
+    instance.configWebhooks.create({url: 'http://test.webhook.com'})
       .then((response) => {
         expect(response.status).toEqual(200);
         done();
@@ -53,7 +53,7 @@ describe('Config', () => {
   it('PUT', (done) => {
     mock.onPut('http://www.example.com/config/webhooks')
       .reply(200, {url: 'https://partner.com/callback'});
-    instance.webhooks.update()
+    instance.configWebhooks.update()
       .then((response) => {
         expect(response.status).toEqual(200);
         done();
@@ -62,7 +62,7 @@ describe('Config', () => {
 
   it('DELETE', (done) => {
     mock.onDelete('http://www.example.com/config/webhooks').reply(200);
-    instance.webhooks.remove()
+    instance.configWebhooks.remove()
       .then((response) => {
         expect(response.status).toEqual(200);
         done();
