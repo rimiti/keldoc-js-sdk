@@ -1,13 +1,13 @@
 // @flow
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import * as sdk from '../../src';
+import * as sdk from '../../../src/index';
 
 jest.setTimeout(10000);
 let instance = {};
 const mock = new MockAdapter(axios);
 
-describe('Avalabilities', () => {
+describe('Agendas', () => {
   beforeAll((done) => {
     sdk.configure({
       auth_token: '165416s5dfsds564sfdf2df',
@@ -21,26 +21,16 @@ describe('Avalabilities', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onGet('http://www.example.com/availabilities').reply(200);
+    mock.onGet('http://www.example.com/agendas.json').reply(200);
     return Promise.all([
-      instance.availabilities,
-      instance.availabilities,
+      instance.agendas,
+      instance.agendas,
     ])
       .then((instances) => {
         expect(instances[0] === instances[1]);
         return Promise.all([
-          instances[0].get({
-            agenda_ids: 112,
-            end_date: '2017-09-18',
-            start_date: '2017-09-18',
-            motive_id: '366',
-          }),
-          instances[1].get({
-            agenda_ids: 112,
-            end_date: '2017-09-18',
-            start_date: '2017-09-18',
-            motive_id: '366',
-          }),
+          instances[0].get(),
+          instances[1].get(),
         ]);
       })
       .then((requests) => {
@@ -51,12 +41,7 @@ describe('Avalabilities', () => {
   });
 
   it('GET', (done) => {
-    mock.onGet('http://www.example.com/availabilities', {
-      agenda_ids: 112,
-      end_date: '2017-09-18',
-      start_date: '2017-09-18',
-      motive_id: '366',
-    })
+    mock.onGet('http://www.example.com/agendas.json')
       .reply(200, [{
         id: 1,
         name: 'Dr. KelDoc test',
@@ -67,12 +52,7 @@ describe('Avalabilities', () => {
         id: 3,
         name: 'Dr. KelDoc test3',
       }]);
-    instance.availabilities.get({
-      agenda_ids: 112,
-      end_date: '2017-09-18',
-      start_date: '2017-09-18',
-      motive_id: '366',
-    })
+    instance.agendas.get()
       .then((response) => {
         expect(response.status).toEqual(200);
         done();

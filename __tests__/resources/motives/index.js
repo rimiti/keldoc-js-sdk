@@ -1,13 +1,13 @@
 // @flow
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import * as sdk from '../../src';
+import * as sdk from '../../../src/index';
 
 jest.setTimeout(10000);
 let instance = {};
 const mock = new MockAdapter(axios);
 
-describe('Agendas', () => {
+describe('Motives', () => {
   beforeAll((done) => {
     sdk.configure({
       auth_token: '165416s5dfsds564sfdf2df',
@@ -21,10 +21,10 @@ describe('Agendas', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onGet('http://www.example.com/agendas.json').reply(200);
+    mock.onGet('http://www.example.com/motives.json').reply(200);
     return Promise.all([
-      instance.agendas,
-      instance.agendas,
+      instance.motives,
+      instance.motives,
     ])
       .then((instances) => {
         expect(instances[0] === instances[1]);
@@ -41,18 +41,24 @@ describe('Agendas', () => {
   });
 
   it('GET', (done) => {
-    mock.onGet('http://www.example.com/agendas.json')
+    mock.onGet('http://www.example.com/motives.json')
       .reply(200, [{
-        id: 1,
-        name: 'Dr. KelDoc test',
+        id: 366,
+        name: 'Consultation',
+        specialty_id: 3,
+        duration: 20,
       }, {
-        id: 2,
-        name: 'Dr. KelDoc test2',
+        id: 587,
+        name: 'Urgence',
+        specialty_id: 3,
+        duration: 20,
       }, {
-        id: 3,
-        name: 'Dr. KelDoc test3',
+        id: 465,
+        name: 'Consultation simple',
+        specialty_id: 45,
+        duration: 20,
       }]);
-    instance.agendas.get()
+    instance.motives.get()
       .then((response) => {
         expect(response.status).toEqual(200);
         done();

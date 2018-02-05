@@ -1,8 +1,8 @@
 // @flow
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import * as sdk from '../../src';
-import {InvalidDatetimeFormat} from '../../src/classes/exceptions';
+import * as sdk from '../../../src/index';
+import {InvalidDatetimeFormat} from '../../../src/classes/exceptions/index';
 
 let instance = {};
 const mock = new MockAdapter(axios);
