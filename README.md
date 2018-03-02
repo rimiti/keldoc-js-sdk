@@ -3,7 +3,7 @@
 [![Dependencies][prod-dependencies-badge]][prod-dependencies]
 [![Dependencies][dev-dependencies-badge]][dev-dependencies]
 [![Code Climate score][codeclimate-score-badge]][codeclimate-score]
-[![Coveralls][coveralls-coverage-badge]][coveralls-coverage]
+[![Coverage][coverage-badge]][coverage]
 [![Code Climate coverage][codeclimate-issues-badge]][codeclimate-issues]
 [![Node.js version][nodejs-badge]][nodejs]
 [![NPM version][npm-badge]][npm]
@@ -456,8 +456,8 @@ MIT © [Dimitri DO BAIRRO](https://github.com/rimiti/keldoc-js-sdk/blob/master/L
 [security-version]: https://nodesecurity.io/orgs/dim-solution/projects/e65e3a46-4110-4de2-ae92-1584b59d3ff0
 [codeclimate-score-badge]: https://api.codeclimate.com/v1/badges/7951ca62e66be94eba69/maintainability
 [codeclimate-score]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/maintainability
-[coveralls-coverage-badge]: https://coveralls.io/repos/github/rimiti/keldoc-js-sdk/badge.svg
-[coveralls-coverage]: https://coveralls.io/github/rimiti/keldoc-js-sdk
+[coverage-badge]: https://codecov.io/gh/rimiti/keldoc-js-sdk/branch/master/graph/badge.svg
+[coverage]: https://codecov.io/gh/rimiti/keldoc-js-sdk
 [codeclimate-issues-badge]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/badges/issue_count.svg
 [codeclimate-issues]: https://codeclimate.com/github/rimiti/keldoc-js-sdk
 [nodejs-badge]: https://img.shields.io/badge/node->=%206.9.0-blue.svg?style=flat-square
