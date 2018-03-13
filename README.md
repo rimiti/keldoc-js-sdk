@@ -19,7 +19,7 @@ This module provides an Keldoc API implementation.
 
 ## Install
 ```
-$ npm install keldoc-js-sdk --save
+$ npm install @rimiti/keldoc-js-sdk --save
 ```
 
 ## Features
@@ -57,7 +57,7 @@ Create your keldoc sdk by requiring it, making it's initial configuration and in
 
 **From import**
 ```javascript
-import * as sdk from 'keldoc-js-sdk'
+import * as sdk from '@rimiti/keldoc-js-sdk'
 
 sdk.configure({
   auth_token: '165416s5dfsds564sfdf2df',
@@ -69,7 +69,7 @@ const keldoc = sdk.create()
 
 **From require**
 ```javascript
-const sdk = require('keldoc-js-sdk');
+const sdk = require('@rimiti/keldoc-js-sdk');
 
 sdk.configure({
   auth_token: '165416s5dfsds564sfdf2df',
