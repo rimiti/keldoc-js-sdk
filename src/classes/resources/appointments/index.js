@@ -9,7 +9,7 @@ export default class Appointments extends Common {
    * @return {Promise.<any>}
    */
   create(body: { start_at: string }): Promise<any> {
-    const url = `${this.configuration.routes.appointments}.json`;
+    const url = `${this.configuration.routes.appointments}`;
     return Validation.validateCreateAppointment(body)
       .then(() => super.postRequest(url, body));
   }
@@ -21,7 +21,7 @@ export default class Appointments extends Common {
    * @return {Promise.<any>}
    */
   update(id: number, body: { start_at: string }): Promise<any> {
-    const url = `${this.configuration.routes.appointments}/${id.toString()}.json`;
+    const url = `${this.configuration.routes.appointments}/${id.toString()}`;
     return Validation.validateUpdateAppointment(body)
       .then(() => super.putRequest(url, body));
   }
@@ -32,7 +32,7 @@ export default class Appointments extends Common {
    * @return {Promise.<any>}
    */
   remove(id: number): Promise<any> {
-    const url = `${this.configuration.routes.appointments}/${id.toString()}.json`;
+    const url = `${this.configuration.routes.appointments}/${id.toString()}`;
     return super.deleteRequest(url);
   }
 }

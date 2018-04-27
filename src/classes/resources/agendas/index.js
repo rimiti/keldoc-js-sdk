@@ -7,7 +7,7 @@ export default class Agendas extends Common {
    * @return {Promise.<any>}
    */
   get(): Promise<any> {
-    const url = `${this.configuration.routes.agendas}.json`;
+    const url = `${this.configuration.routes.agendas}`;
     return super.getRequest(url);
   }
 }

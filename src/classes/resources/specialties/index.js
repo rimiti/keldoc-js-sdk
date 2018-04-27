@@ -7,7 +7,7 @@ export default class Specialities extends Common {
    * @return {Promise.<any>}
    */
   get(): Promise<any> {
-    const url = `${this.configuration.routes.specialties}.json`;
+    const url = `${this.configuration.routes.specialties}`;
     return super.getRequest(url);
   }
 }
