@@ -21,7 +21,7 @@ describe('Agendas', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onGet('http://www.example.com/agendas.json').reply(200);
+    mock.onGet('http://www.example.com/agendas').reply(200);
     return Promise.all([
       instance.agendas,
       instance.agendas,
@@ -41,7 +41,7 @@ describe('Agendas', () => {
   });
 
   it('GET', (done) => {
-    mock.onGet('http://www.example.com/agendas.json')
+    mock.onGet('http://www.example.com/agendas')
       .reply(200, [{
         id: 1,
         name: 'Dr. KelDoc test',
