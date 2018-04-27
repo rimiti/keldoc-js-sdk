@@ -6,12 +6,12 @@ import type {fetchAvailableSlotsRequest} from '../../types';
 export default class AvailableSlots extends Common {
   /**
    * @description Get availabilities.
-   * @param body
+   * @param options
    * @return {Promise.<any>}
    */
-  get(body: fetchAvailableSlotsRequest): Promise<any> {
+  get(options: fetchAvailableSlotsRequest): Promise<any> {
     const url = `${this.configuration.routes.availableSlots}`;
-    return Validation.validateFetchAvailableSlots(body)
-      .then(() => super.getRequest(url, body));
+    return Validation.validateFetchAvailableSlots(options)
+      .then(() => super.getRequest(url, options));
   }
 }

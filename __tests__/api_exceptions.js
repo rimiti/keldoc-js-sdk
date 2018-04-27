@@ -26,7 +26,7 @@ describe('API Exceptions', () => {
   afterEach(() => mock.reset());
 
   it('should throw Bad Request exception when response status equal to 400', (done) => {
-    mock.onPost('http://www.example.com/appointments.json', {start_at: '20010923', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments', {start_at: '20010923', agenda_id: '2135', state: 'true'})
       .reply(400);
     instance.appointments.create({start_at: '20010923', agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -38,7 +38,7 @@ describe('API Exceptions', () => {
   });
 
   it('should throw Internal Error exception when response status equal to 500', (done) => {
-    mock.onPost('http://www.example.com/appointments.json', {start_at: '20010923', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments', {start_at: '20010923', agenda_id: '2135', state: 'true'})
       .reply(500);
     instance.appointments.create({start_at: '20010923', agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -50,7 +50,7 @@ describe('API Exceptions', () => {
   });
 
   it('should throw Over Quota exception when response status equal to 402', (done) => {
-    mock.onPost('http://www.example.com/appointments.json', {start_at: '20010923', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments', {start_at: '20010923', agenda_id: '2135', state: 'true'})
       .reply(402);
     instance.appointments.create({start_at: '20010923', agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -62,7 +62,7 @@ describe('API Exceptions', () => {
   });
 
   it('should throw Unauthorized exception when response status equal to 401', (done) => {
-    mock.onPost('http://www.example.com/appointments.json', {start_at: '20010923', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments', {start_at: '20010923', agenda_id: '2135', state: 'true'})
       .reply(401);
     instance.appointments.create({start_at: '20010923', agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -74,7 +74,7 @@ describe('API Exceptions', () => {
   });
 
   it('should throw Validation Error exception when response status equal to 422', (done) => {
-    mock.onPost('http://www.example.com/appointments.json', {start_at: '20010923', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments', {start_at: '20010923', agenda_id: '2135', state: 'true'})
       .reply(422);
     instance.appointments.create({start_at: '20010923', agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -86,7 +86,7 @@ describe('API Exceptions', () => {
   });
 
   it('should throw Not Acceptable exception when response status equal to 406', (done) => {
-    mock.onPost('http://www.example.com/appointments.json', {start_at: '20010923', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments', {start_at: '20010923', agenda_id: '2135', state: 'true'})
       .reply(406);
     instance.appointments.create({start_at: '20010923', agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -100,7 +100,7 @@ describe('API Exceptions', () => {
   });
 
   it('should throw Not Found exception when response status equal to 404', (done) => {
-    mock.onPost('http://www.example.com/appointments.json', {start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments', {start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
       .reply(404);
     instance.appointments.create({start_at: '20010923', agenda_id: '2135', state: 'true'})
       .catch((e) => {
@@ -112,7 +112,7 @@ describe('API Exceptions', () => {
   });
 
   it('should throws Unknown error for get request', (done) => {
-    mock.onGet('http://www.example.com/agendas.json').reply(100, [{id: 1, name: 'Dr. KelDoc test'}]);
+    mock.onGet('http://www.example.com/agendas').reply(100, [{id: 1, name: 'Dr. KelDoc test'}]);
     instance.agendas.get()
       .catch((e) => {
         expect(e).toBeInstanceOf(UnknownError);
@@ -123,7 +123,7 @@ describe('API Exceptions', () => {
   });
 
   it('should throws Unknown error for put request', (done) => {
-    mock.onPut('http://www.example.com/appointments/21354.json', {start_at: '2001-09-23', agenda_id: '2135'})
+    mock.onPut('http://www.example.com/appointments/21354', {start_at: '2001-09-23', agenda_id: '2135'})
       .reply(100, {
         start_at: '2017-09-18T17:30:00.000+02:00',
         duration: 1800,

@@ -21,7 +21,7 @@ describe('Specialities', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onGet('http://www.example.com/specialties.json').reply(200);
+    mock.onGet('http://www.example.com/specialties').reply(200);
     return Promise.all([
       instance.specialties,
       instance.specialties,
@@ -41,7 +41,7 @@ describe('Specialities', () => {
   });
 
   it('GET', (done) => {
-    mock.onGet('http://www.example.com/specialties.json', {})
+    mock.onGet('http://www.example.com/specialties', {})
       .reply(200, [{
         id: 3,
         name: 'ORL',

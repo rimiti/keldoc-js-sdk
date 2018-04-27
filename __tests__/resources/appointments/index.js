@@ -21,7 +21,7 @@ describe('Appointments', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onPost('http://www.example.com/appointments.json').reply(200);
+    mock.onPost('http://www.example.com/appointments').reply(200);
     return Promise.all([
       instance.appointments,
       instance.appointments,
@@ -41,7 +41,7 @@ describe('Appointments', () => {
   });
 
   it('POST', (done) => {
-    mock.onPost('http://www.example.com/appointments.json', {start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
+    mock.onPost('http://www.example.com/appointments', {start_at: '2001-09-23', agenda_id: '2135', state: 'true'})
       .reply(200, {
         start_at: '2017-09-18T17:30:00.000+02:00',
         duration: 1800,
@@ -71,7 +71,7 @@ describe('Appointments', () => {
   });
 
   it('PUT', (done) => {
-    mock.onPut('http://www.example.com/appointments/21354.json', {start_at: '2001-09-23', agenda_id: '2135'})
+    mock.onPut('http://www.example.com/appointments/21354', {start_at: '2001-09-23', agenda_id: '2135'})
       .reply(200, {
         start_at: '2017-09-18T17:30:00.000+02:00',
         duration: 1800,
@@ -101,7 +101,7 @@ describe('Appointments', () => {
   });
 
   it('DELETE', (done) => {
-    mock.onDelete('http://www.example.com/appointments/21321.json').reply(200);
+    mock.onDelete('http://www.example.com/appointments/21321').reply(200);
     instance.appointments.remove(21321)
       .then((response) => {
         expect(response.status).toEqual(200);

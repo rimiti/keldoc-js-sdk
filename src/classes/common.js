@@ -31,12 +31,12 @@ export default class Common {
   /**
    * @description Runs GET request.
    * @param url
-   * @param body
+   * @param options
    * @return {Promise}
    */
-  getRequest(url: string, body: any): Promise<any> {
+  getRequest(url: string, options: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      axios.get(this.configuration.host + url, body)
+      axios.get(this.configuration.host + url, options)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
     });
@@ -88,7 +88,7 @@ export default class Common {
    * @param response
    * @return {*}
    */
-  static httpStatus(response: {}): any {
+  static httpStatus(response: { status: number }): any {
     if (response.status === 400) return new BadRequest();
     else if (response.status === 401) return new Unauthorized();
     else if (response.status === 402) return new OverQuota();
