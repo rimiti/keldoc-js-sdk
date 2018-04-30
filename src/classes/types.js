@@ -26,3 +26,7 @@ export type fetchAvailableSlotsRequest = {
   start_date: string,
   end_date: string,
 }
+
+export type fetchMotivesRequest = {
+  full_details?: boolean,
+}
