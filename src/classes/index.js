@@ -11,14 +11,23 @@ import ConfigWebhooks from './resources/config/webhooks';
 
 export default class SDK {
   configuration: Object;
+
   agendasClass: Agendas;
+
   appointmentsClass: Appointments;
+
   availabilitiesClass: Availabilities;
+
   motivesClass: Motives;
+
   patientsClass: Patients;
+
   specialtiesClass: Specialties;
+
   configClass: Config;
+
   configWebhooksClass: ConfigWebhooks;
+
   availableSlotsClass: AvailableSlots;
 
   constructor(configuration: {}) {

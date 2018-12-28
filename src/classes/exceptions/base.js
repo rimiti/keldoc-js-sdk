@@ -1,6 +1,7 @@
 // @flow
 export default class Exception {
   ename: string;
+
   emessage: string;
 
   constructor() {
