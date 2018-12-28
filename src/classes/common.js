@@ -15,7 +15,9 @@ import {
 
 export default class Common {
   validator: Validation;
+
   configuration: Config;
+
   options: {};
 
   constructor(configuration: Config) {
@@ -90,12 +92,12 @@ export default class Common {
    */
   static httpStatus(response: { status: number }): any {
     if (response.status === 400) return new BadRequest();
-    else if (response.status === 401) return new Unauthorized();
-    else if (response.status === 402) return new OverQuota();
-    else if (response.status === 404) return new NotFound();
-    else if (response.status === 406) return new NotAcceptable();
-    else if (response.status === 422) return new ValidationError();
-    else if (response.status === 500) return new InternalError();
+    if (response.status === 401) return new Unauthorized();
+    if (response.status === 402) return new OverQuota();
+    if (response.status === 404) return new NotFound();
+    if (response.status === 406) return new NotAcceptable();
+    if (response.status === 422) return new ValidationError();
+    if (response.status === 500) return new InternalError();
     return new UnknownError();
   }
 }
