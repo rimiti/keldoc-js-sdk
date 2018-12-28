@@ -1,14 +1,10 @@
 # keldoc-js-sdk
 
 [![Dependencies][prod-dependencies-badge]][prod-dependencies]
-[![Dependencies][dev-dependencies-badge]][dev-dependencies]
 [![Code Climate score][codeclimate-score-badge]][codeclimate-score]
 [![Coverage][coverage-badge]][coverage]
 [![Code Climate coverage][codeclimate-issues-badge]][codeclimate-issues]
-[![Node.js version][nodejs-badge]][nodejs]
-[![NPM version][npm-badge]][npm]
 [![Build Status][travis-badge]][travis-ci]
-[![Security version][security-version-badge]][security-version]
 [![MIT License][license-badge]][LICENSE]
 [![PRs Welcome][prs-badge]][prs]
 
@@ -450,20 +446,12 @@ MIT © [Dimitri DO BAIRRO](https://github.com/rimiti/keldoc-js-sdk/blob/master/L
 
 [prod-dependencies-badge]: https://david-dm.org/rimiti/keldoc-js-sdk/status.svg
 [prod-dependencies]: https://david-dm.org/rimiti/keldoc-js-sdk
-[dev-dependencies-badge]: https://david-dm.org/rimiti/keldoc-js-sdk/dev-status.svg
-[dev-dependencies]: https://david-dm.org/rimiti/keldoc-js-sdk?type=dev
-[security-version-badge]: https://nodesecurity.io/orgs/dim-solution/projects/e65e3a46-4110-4de2-ae92-1584b59d3ff0/badge
-[security-version]: https://nodesecurity.io/orgs/dim-solution/projects/e65e3a46-4110-4de2-ae92-1584b59d3ff0
 [codeclimate-score-badge]: https://api.codeclimate.com/v1/badges/7951ca62e66be94eba69/maintainability
 [codeclimate-score]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/maintainability
 [coverage-badge]: https://codecov.io/gh/rimiti/keldoc-js-sdk/branch/master/graph/badge.svg
 [coverage]: https://codecov.io/gh/rimiti/keldoc-js-sdk
 [codeclimate-issues-badge]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/badges/issue_count.svg
 [codeclimate-issues]: https://codeclimate.com/github/rimiti/keldoc-js-sdk
-[nodejs-badge]: https://img.shields.io/badge/node->=%206.9.0-blue.svg?style=flat-square
-[nodejs]: https://nodejs.org/dist/latest-v6.x/docs/api/
-[npm-badge]: https://img.shields.io/badge/npm->=%203.10.8-blue.svg?style=flat-square
-[npm]: https://docs.npmjs.com/
 [travis-badge]: https://travis-ci.org/rimiti/keldoc-js-sdk.svg?branch=master
 [travis-ci]: https://travis-ci.org/rimiti/keldoc-js-sdk
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
