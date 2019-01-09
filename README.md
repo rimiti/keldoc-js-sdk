@@ -1,9 +1,7 @@
 # keldoc-js-sdk
 
 [![Dependencies][prod-dependencies-badge]][prod-dependencies]
-[![Code Climate score][codeclimate-score-badge]][codeclimate-score]
 [![Coverage][coverage-badge]][coverage]
-[![Code Climate coverage][codeclimate-issues-badge]][codeclimate-issues]
 [![Build Status][travis-badge]][travis-ci]
 [![MIT License][license-badge]][LICENSE]
 [![PRs Welcome][prs-badge]][prs]
@@ -56,9 +54,12 @@ Create your keldoc sdk by requiring it, making it's initial configuration and in
 import * as sdk from '@rimiti/keldoc-js-sdk'
 
 sdk.configure({
-  auth_token: '165416s5dfsds564sfdf2df',
+  credentials: {
+    clientAccessKeyId: 'CLIENT_ACCESS_KEY_ID',
+    secretAccessKeyId: 'SECRET_ACCESS_KEY_ID',
+  },
   host: 'http://www.example.com'
-})
+});
 
 const keldoc = sdk.create()
 ```
@@ -68,7 +69,10 @@ const keldoc = sdk.create()
 const sdk = require('@rimiti/keldoc-js-sdk');
 
 sdk.configure({
-  auth_token: '165416s5dfsds564sfdf2df',
+  credentials: {
+    clientAccessKeyId: 'CLIENT_ACCESS_KEY_ID',
+    secretAccessKeyId: 'SECRET_ACCESS_KEY_ID',
+  },
   host: 'http://www.example.com',
   routes: {
     agendas: '/agendas.json',
@@ -446,12 +450,8 @@ MIT © [Dimitri DO BAIRRO](https://github.com/rimiti/keldoc-js-sdk/blob/master/L
 
 [prod-dependencies-badge]: https://david-dm.org/rimiti/keldoc-js-sdk/status.svg
 [prod-dependencies]: https://david-dm.org/rimiti/keldoc-js-sdk
-[codeclimate-score-badge]: https://api.codeclimate.com/v1/badges/7951ca62e66be94eba69/maintainability
-[codeclimate-score]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/maintainability
 [coverage-badge]: https://codecov.io/gh/rimiti/keldoc-js-sdk/branch/master/graph/badge.svg
 [coverage]: https://codecov.io/gh/rimiti/keldoc-js-sdk
-[codeclimate-issues-badge]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/badges/issue_count.svg
-[codeclimate-issues]: https://codeclimate.com/github/rimiti/keldoc-js-sdk
 [travis-badge]: https://travis-ci.org/rimiti/keldoc-js-sdk.svg?branch=master
 [travis-ci]: https://travis-ci.org/rimiti/keldoc-js-sdk
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
