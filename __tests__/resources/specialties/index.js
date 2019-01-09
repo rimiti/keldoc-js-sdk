@@ -10,7 +10,10 @@ const mock = new MockAdapter(axios);
 describe('Specialities', () => {
   beforeAll((done) => {
     sdk.configure({
-      auth_token: '165416s5dfsds564sfdf2df',
+      credentials: {
+        clientAccessKeyId: 'CLIENT_ACCESS_KEY_ID',
+        secretAccessKeyId: 'SECRET_ACCESS_KEY_ID',
+      },
       host: 'http://www.example.com',
     });
 
