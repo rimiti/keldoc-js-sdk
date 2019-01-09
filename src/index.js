@@ -4,7 +4,10 @@ import SDK from './classes';
 import type {Config} from './classes/types';
 
 let configuration = {
-  auth_token: '165416s5dfsds564sfdf2df',
+  credentials: {
+    clientAccessKeyId: '',
+    secretAccessKeyId: '',
+  },
   host: 'http://www.example.com',
   routes: {
     agendas: '/agendas',
