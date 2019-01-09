@@ -100,10 +100,7 @@ const keldoc = sdk.create();
   __Function__
 
 ```javascript
-    keldoc.agendas.get()
-      .then((response) => {
-        //use your response
-      });
+    const response = await keldoc.agendas.get();
 ```
 
 ---------------------------------------
@@ -143,10 +140,7 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.appointments.create({start_at: '2001-09-23', agenda_id: '2135', state: 'confirmed'})
-      .then((response) => {
-        //use your response
-      });
+    const response = await keldoc.appointments.create({start_at: '2001-09-23', agenda_id: '2135', state: 'confirmed'});
 ```
 
 <a name="updateAppointment"/>
@@ -183,10 +177,7 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.appointments.update(21354, {start_at: '2001-09-23', agenda_id: '2135', state: 'confirmed'})
-      .then((response) => {
-        //use your response
-      });
+    const response = await keldoc.appointments.update(21354, {start_at: '2001-09-23', agenda_id: '2135', state: 'confirmed'});
 ```
 
 <a name="removeAppointment"/>
@@ -196,14 +187,11 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    id          {Integer} KelDoc internal ID for appointment to remove.
+    id {Integer} KelDoc internal ID for appointment to remove.
 ```
 
 ```javascript
-    keldoc.appointments.remove(21321)
-      .then((response) => {
-        //use your response
-      });
+    const response = await keldoc.appointments.remove(21321);
 ```
 
 ---------------------------------------
@@ -224,15 +212,12 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.availabilities.get({
+    const response = await keldoc.availabilities.get({
       agenda_ids: 112,
       end_date: '2017-09-17',
       start_date: '2017-09-18',
       motive_id: '366',
-    })
-      .then((response) => {
-        //use your response
-      });
+    });
 ```
 
 ---------------------------------------
@@ -252,14 +237,11 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.availableSlots.get({
+    const response = await keldoc.availableSlots.get({
       agenda_id: 112,
       start_date: '2017-09-18',
       end_date: '2017-09-17',
-    })
-      .then((response) => {
-        //use your response
-      });
+    });
 ```
 
 ---------------------------------------
@@ -271,10 +253,7 @@ const keldoc = sdk.create();
 * Retrieves account configuration : agendas, motives, specialties
 
 ```javascript
-    keldoc.config.get()
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.config.get();
 ```
 
 ---------------------------------------
@@ -286,10 +265,7 @@ const keldoc = sdk.create();
 #### Fetch all motives
 
 ```javascript
-    keldoc.motives.get()
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.motives.get();
 ```
 
 ---------------------------------------
@@ -315,15 +291,12 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.patients.create({
+    const response = await keldoc.patients.create({
       first_name: 'test',
       last_name: 'john',
       gender: 'm',
       email: 'test.john@test.com'
-    })
-      .then((response) => {
-        // use your response
-      });
+    });
 ```
 
 <a name="updatePatient"/>
@@ -346,16 +319,12 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.patients.update(12026, {
+   const response = await keldoc.patients.update(12026, {
       first_name: 'test',
       last_name: 'john',
       gender: 'm',
       email: 'test.john@test.com'
-    })
-      .then((response) => {
-        expect(response.status).toEqual(200);
-        done();
-      });
+    });
 ```
 
 ---------------------------------------
@@ -367,10 +336,7 @@ const keldoc = sdk.create();
 * Fetch all specialties
 
 ```javascript
-    keldoc.specialties.get()
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.specialties.get();
 ```
 
 ---------------------------------------
@@ -384,14 +350,11 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url         {String} Webhook url.
+    url {String} Webhook url.
 ```
 
 ```javascript
-    keldoc.configWebhooks.create({url: 'http://test.webhook.com'})
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.configWebhooks.create({url: 'http://test.webhook.com'});
 ```
 
 <a name="updateConfigWebhooks"/>
@@ -401,14 +364,11 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url         {String} Webhook url.
+    url {String} Webhook url.
 ```
 
 ```javascript
-    keldoc.configWebhooks.update({url: 'http://test.webhook.com'})
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.configWebhooks.update({url: 'http://test.webhook.com'});
 ```
 
 <a name="removeConfigWebhooks"/>
@@ -418,14 +378,11 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url         {String} Webhook url.
+    url {String} Webhook url.
 ```
 
 ```javascript
-    keldoc.configWebhooks()
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.configWebhooks();
 ```
 
 ---------------------------------------
