@@ -1,7 +1,10 @@
 // @flow
 export type Config = {
   host: string,
-  auth_token: string,
+  credentials: {
+    clientAccessKeyId: string,
+    secretAccessKeyId: string,
+  },
   routes: {
     availabilities: string,
     availableSlots: string,
