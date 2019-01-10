@@ -1,5 +1,6 @@
 // @flow
 import axios from 'axios';
+import * as crypto from 'crypto-js';
 import Validation from './validation';
 import type {Config} from './types';
 import {
@@ -20,14 +21,30 @@ export default class Common {
 
   options: {};
 
+  contentType: string;
+
   constructor(configuration: Config) {
     this.validator = new Validation();
+    this.contentType = 'application/json';
     this.configuration = configuration;
     axios.defaults.headers.common = {
-      Authorization: this.configuration.auth_token,
+      Authorization: this.generateToken(this.configuration.credentials),
       Accept: 'application/vnd.keldoc-v1+json',
-      'Content-Type': 'application/json',
+      'Content-Type': this.contentType,
     };
+  }
+
+  /**
+   * @description Generate token from credentials.
+   * @param credentials
+   * @returns {string}
+   */
+  generateToken(credentials: {clientAccessKeyId: string, secretAccessKeyId: string}): string {
+    const currentDate = new Date();
+    const date = new Date(currentDate.setMinutes(currentDate.getMinutes() - currentDate.getTimezoneOffset()));
+    const message = `${date.toUTCString().slice(0, -4)},${this.contentType}`;
+    const signature = crypto.enc.Base64.stringify(crypto.HmacSHA256(message, credentials.secretAccessKeyId));
+    return `Bearer ${credentials.clientAccessKeyId}:${signature}`.replace(/[^A-Za-z0-9=:\s]/g, '');
   }
 
   /**
