@@ -35,7 +35,6 @@
   "bugs": {
     "url": "https://github.com/rimiti/keldoc-js-sdk/issues"
   },
-  "engineStrict": true,
   "homepage": "https://github.com/rimiti/keldoc-js-sdk#readme",
   "dependencies": {
     "axios": "^0.18.0",
