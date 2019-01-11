@@ -11,7 +11,7 @@
     "postlint": "npm run typecheck",
     "typecheck": "flow check",
     "pretest": "npm run lint",
-    "prepare": "npm run test && npm run build",
+    "prepublish": "npm run test && npm run build",
     "test": "npm run test-only",
     "test-only": "jest --coverage",
     "test:watch": "jest --watch",
