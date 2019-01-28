@@ -11,7 +11,7 @@
     "postlint": "npm run typecheck",
     "typecheck": "flow check",
     "pretest": "npm run lint",
-    "prepublish": "npm run test && npm run build",
+    "prepublishOnly": "npm run test && npm run build",
     "test": "npm run test-only",
     "test-only": "jest --coverage",
     "test:watch": "jest --watch",
@@ -41,25 +41,25 @@
     "babel-runtime": "^6.26.0",
     "crypto-js": "^3.1.9-1",
     "json-override": "^0.2.0",
-    "moment": "^2.23.0"
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.16.0",
     "babel-cli": "^6.26.0",
     "babel-core": "~6.26.3",
     "babel-eslint": "~10.0.1",
-    "babel-jest": "~23.6.0",
+    "babel-jest": "~24.0.0",
     "babel-plugin-transform-async-to-generator": "~6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "~6.26.2",
     "babel-plugin-transform-flow-strip-types": "~6.22.0",
     "babel-plugin-transform-runtime": "~6.23.0",
     "babel-preset-stage-3": "~6.24.1",
-    "eslint": "~5.12.0",
+    "eslint": "~5.12.1",
     "eslint-config-airbnb-base": "~13.1.0",
     "eslint-plugin-flowtype": "~3.2.1",
-    "eslint-plugin-import": "~2.14.0",
-    "flow-bin": "~0.90.0",
-    "jest": "~23.6.0"
+    "eslint-plugin-import": "~2.15.0",
+    "flow-bin": "~0.91.0",
+    "jest": "~24.0.0"
   },
   "jest": {
     "coverageThreshold": {
