@@ -23,6 +23,8 @@ export default class Common {
 
   headerContentType: string;
 
+  headerDate: string;
+
   constructor(configuration: Config) {
     this.validator = new Validation();
     this.headerContentType = 'application/json';
