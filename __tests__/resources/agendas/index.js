@@ -10,7 +10,10 @@ const mock = new MockAdapter(axios);
 describe('Agendas', () => {
   beforeAll((done) => {
     sdk.configure({
-      auth_token: '165416s5dfsds564sfdf2df',
+      credentials: {
+        clientAccessKeyId: 'CLIENT_ACCESS_KEY_ID',
+        secretAccessKeyId: 'SECRET_ACCESS_KEY_ID',
+      },
       host: 'http://www.example.com',
     });
 
@@ -21,7 +24,7 @@ describe('Agendas', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onGet('http://www.example.com/agendas').reply(200);
+    mock.onGet('http://www.example.com/partners/agendas').reply(200);
     return Promise.all([
       instance.agendas,
       instance.agendas,
@@ -41,7 +44,7 @@ describe('Agendas', () => {
   });
 
   it('GET', (done) => {
-    mock.onGet('http://www.example.com/agendas')
+    mock.onGet('http://www.example.com/partners/agendas')
       .reply(200, [{
         id: 1,
         name: 'Dr. KelDoc test',

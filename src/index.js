@@ -4,18 +4,21 @@ import SDK from './classes';
 import type {Config} from './classes/types';
 
 let configuration = {
-  auth_token: '165416s5dfsds564sfdf2df',
+  credentials: {
+    clientAccessKeyId: '',
+    secretAccessKeyId: '',
+  },
   host: 'http://www.example.com',
   routes: {
-    agendas: '/agendas',
-    appointments: '/appointments',
-    availabilities: '/availabilities',
-    availableSlots: '/available_slots',
-    motives: '/motives',
-    patients: '/patients',
-    specialties: '/specialties',
-    config: '/config',
-    configWebhooks: '/config/webhooks',
+    agendas: '/partners/agendas',
+    appointments: '/partners/appointments',
+    availabilities: '/partners/availabilities',
+    availableSlots: '/partners/available_slots',
+    motives: '/partners/motives',
+    patients: '/partners/patients',
+    specialties: '/partners/specialties',
+    config: '/partners/config',
+    configWebhooks: '/partners/config/webhooks',
   },
 };
 

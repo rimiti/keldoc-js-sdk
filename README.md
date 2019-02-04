@@ -1,9 +1,7 @@
 # keldoc-js-sdk
 
 [![Dependencies][prod-dependencies-badge]][prod-dependencies]
-[![Code Climate score][codeclimate-score-badge]][codeclimate-score]
 [![Coverage][coverage-badge]][coverage]
-[![Code Climate coverage][codeclimate-issues-badge]][codeclimate-issues]
 [![Build Status][travis-badge]][travis-ci]
 [![MIT License][license-badge]][LICENSE]
 [![PRs Welcome][prs-badge]][prs]
@@ -56,9 +54,12 @@ Create your keldoc sdk by requiring it, making it's initial configuration and in
 import * as sdk from '@rimiti/keldoc-js-sdk'
 
 sdk.configure({
-  auth_token: '165416s5dfsds564sfdf2df',
+  credentials: {
+    clientAccessKeyId: 'CLIENT_ACCESS_KEY_ID',
+    secretAccessKeyId: 'SECRET_ACCESS_KEY_ID',
+  },
   host: 'http://www.example.com'
-})
+});
 
 const keldoc = sdk.create()
 ```
@@ -68,7 +69,10 @@ const keldoc = sdk.create()
 const sdk = require('@rimiti/keldoc-js-sdk');
 
 sdk.configure({
-  auth_token: '165416s5dfsds564sfdf2df',
+  credentials: {
+    clientAccessKeyId: 'CLIENT_ACCESS_KEY_ID',
+    secretAccessKeyId: 'SECRET_ACCESS_KEY_ID',
+  },
   host: 'http://www.example.com',
   routes: {
     agendas: '/agendas.json',
@@ -96,10 +100,7 @@ const keldoc = sdk.create();
   __Function__
 
 ```javascript
-    keldoc.agendas.get()
-      .then((response) => {
-        //use your response
-      });
+    const response = await keldoc.agendas.get();
 ```
 
 ---------------------------------------
@@ -139,10 +140,7 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.appointments.create({start_at: '2001-09-23', agenda_id: '2135', state: 'confirmed'})
-      .then((response) => {
-        //use your response
-      });
+    const response = await keldoc.appointments.create({start_at: '2001-09-23', agenda_id: '2135', state: 'confirmed'});
 ```
 
 <a name="updateAppointment"/>
@@ -179,10 +177,7 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.appointments.update(21354, {start_at: '2001-09-23', agenda_id: '2135', state: 'confirmed'})
-      .then((response) => {
-        //use your response
-      });
+    const response = await keldoc.appointments.update(21354, {start_at: '2001-09-23', agenda_id: '2135', state: 'confirmed'});
 ```
 
 <a name="removeAppointment"/>
@@ -192,14 +187,11 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    id          {Integer} KelDoc internal ID for appointment to remove.
+    id {Integer} KelDoc internal ID for appointment to remove.
 ```
 
 ```javascript
-    keldoc.appointments.remove(21321)
-      .then((response) => {
-        //use your response
-      });
+    const response = await keldoc.appointments.remove(21321);
 ```
 
 ---------------------------------------
@@ -220,15 +212,12 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.availabilities.get({
+    const response = await keldoc.availabilities.get({
       agenda_ids: 112,
       end_date: '2017-09-17',
       start_date: '2017-09-18',
       motive_id: '366',
-    })
-      .then((response) => {
-        //use your response
-      });
+    });
 ```
 
 ---------------------------------------
@@ -248,14 +237,11 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.availableSlots.get({
+    const response = await keldoc.availableSlots.get({
       agenda_id: 112,
       start_date: '2017-09-18',
       end_date: '2017-09-17',
-    })
-      .then((response) => {
-        //use your response
-      });
+    });
 ```
 
 ---------------------------------------
@@ -267,10 +253,7 @@ const keldoc = sdk.create();
 * Retrieves account configuration : agendas, motives, specialties
 
 ```javascript
-    keldoc.config.get()
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.config.get();
 ```
 
 ---------------------------------------
@@ -282,10 +265,7 @@ const keldoc = sdk.create();
 #### Fetch all motives
 
 ```javascript
-    keldoc.motives.get()
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.motives.get();
 ```
 
 ---------------------------------------
@@ -311,15 +291,12 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.patients.create({
+    const response = await keldoc.patients.create({
       first_name: 'test',
       last_name: 'john',
       gender: 'm',
       email: 'test.john@test.com'
-    })
-      .then((response) => {
-        // use your response
-      });
+    });
 ```
 
 <a name="updatePatient"/>
@@ -342,16 +319,12 @@ const keldoc = sdk.create();
 ```
 
 ```javascript
-    keldoc.patients.update(12026, {
+   const response = await keldoc.patients.update(12026, {
       first_name: 'test',
       last_name: 'john',
       gender: 'm',
       email: 'test.john@test.com'
-    })
-      .then((response) => {
-        expect(response.status).toEqual(200);
-        done();
-      });
+    });
 ```
 
 ---------------------------------------
@@ -363,10 +336,7 @@ const keldoc = sdk.create();
 * Fetch all specialties
 
 ```javascript
-    keldoc.specialties.get()
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.specialties.get();
 ```
 
 ---------------------------------------
@@ -380,14 +350,11 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url         {String} Webhook url.
+    url {String} Webhook url.
 ```
 
 ```javascript
-    keldoc.configWebhooks.create({url: 'http://test.webhook.com'})
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.configWebhooks.create({url: 'http://test.webhook.com'});
 ```
 
 <a name="updateConfigWebhooks"/>
@@ -397,14 +364,11 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url         {String} Webhook url.
+    url {String} Webhook url.
 ```
 
 ```javascript
-    keldoc.configWebhooks.update({url: 'http://test.webhook.com'})
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.configWebhooks.update({url: 'http://test.webhook.com'});
 ```
 
 <a name="removeConfigWebhooks"/>
@@ -414,14 +378,11 @@ const keldoc = sdk.create();
   __Arguments__
 
 ```javascript
-    url         {String} Webhook url.
+    url {String} Webhook url.
 ```
 
 ```javascript
-    keldoc.configWebhooks()
-      .then((response) => {
-        // use your response
-      });
+    const response = await keldoc.configWebhooks();
 ```
 
 ---------------------------------------
@@ -446,12 +407,8 @@ MIT © [Dimitri DO BAIRRO](https://github.com/rimiti/keldoc-js-sdk/blob/master/L
 
 [prod-dependencies-badge]: https://david-dm.org/rimiti/keldoc-js-sdk/status.svg
 [prod-dependencies]: https://david-dm.org/rimiti/keldoc-js-sdk
-[codeclimate-score-badge]: https://api.codeclimate.com/v1/badges/7951ca62e66be94eba69/maintainability
-[codeclimate-score]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/maintainability
 [coverage-badge]: https://codecov.io/gh/rimiti/keldoc-js-sdk/branch/master/graph/badge.svg
 [coverage]: https://codecov.io/gh/rimiti/keldoc-js-sdk
-[codeclimate-issues-badge]: https://codeclimate.com/github/rimiti/keldoc-js-sdk/badges/issue_count.svg
-[codeclimate-issues]: https://codeclimate.com/github/rimiti/keldoc-js-sdk
 [travis-badge]: https://travis-ci.org/rimiti/keldoc-js-sdk.svg?branch=master
 [travis-ci]: https://travis-ci.org/rimiti/keldoc-js-sdk
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square

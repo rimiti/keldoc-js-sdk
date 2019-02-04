@@ -1,11 +1,10 @@
 language: node_js
 node_js:
-  - 10
+  - node
+  - lts/*
 before_install:
-  - npm i -g codecov
-install:
-  - npm i
+  - yarn global add codecov
 script:
-  - npm run test
+  - yarn test
 after_success:
   - codecov

@@ -12,7 +12,7 @@
     "object-curly-spacing": "off",
     "max-len": [
       2,
-      120
+      125
     ],
     "prefer-arrow-callback": 0,
     "arrow-parens": [
