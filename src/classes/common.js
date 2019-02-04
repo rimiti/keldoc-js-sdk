@@ -21,16 +21,18 @@ export default class Common {
 
   options: {};
 
-  contentType: string;
+  headerContentType: string;
 
   constructor(configuration: Config) {
     this.validator = new Validation();
-    this.contentType = 'application/json';
+    this.headerContentType = 'application/json';
+    this.headerDate = '';
     this.configuration = configuration;
     axios.defaults.headers.common = {
       Authorization: this.generateToken(this.configuration.credentials),
       Accept: 'application/vnd.keldoc-v1+json',
-      'Content-Type': this.contentType,
+      'Content-Type': this.headerContentType,
+      Date: this.headerDate,
     };
   }
 
@@ -42,7 +44,8 @@ export default class Common {
   generateToken(credentials: {clientAccessKeyId: string, secretAccessKeyId: string}): string {
     const currentDate = new Date();
     const date = new Date(currentDate.setMinutes(currentDate.getMinutes() - currentDate.getTimezoneOffset()));
-    const message = `${date.toUTCString().slice(0, -4)},${this.contentType}`;
+    this.headerDate = date.toUTCString().slice(0, -4);
+    const message = `${this.headerDate},${this.headerContentType}`;
     const signature = crypto.enc.Base64.stringify(crypto.HmacSHA256(message, credentials.secretAccessKeyId));
     return `Bearer ${credentials.clientAccessKeyId}:${signature}`.replace(/[^A-Za-z0-9=:\s]/g, '');
   }
