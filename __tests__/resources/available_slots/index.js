@@ -24,7 +24,7 @@ describe('Available slots', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onGet('http://www.example.com/available_slots').reply(200);
+    mock.onGet('http://www.example.com/partners/available_slots').reply(200);
     return Promise.all([
       instance.availableSlots,
       instance.availableSlots,
@@ -52,7 +52,7 @@ describe('Available slots', () => {
   });
 
   it('GET (with wrong start_date format)', () => {
-    mock.onGet('http://www.example.com/available_slots').reply(200);
+    mock.onGet('http://www.example.com/partners/available_slots').reply(200);
     return instance.availableSlots.get({
       agenda_id: 112,
       start_date: 'd2018-01-18',
@@ -65,7 +65,7 @@ describe('Available slots', () => {
   });
 
   it('GET (with wrong end_date format)', () => {
-    mock.onGet('http://www.example.com/available_slots').reply(200);
+    mock.onGet('http://www.example.com/partners/available_slots').reply(200);
     return instance.availableSlots.get({
       agenda_id: 112,
       start_date: '2018-01-18',
@@ -78,7 +78,7 @@ describe('Available slots', () => {
   });
 
   it('GET', (done) => {
-    mock.onGet('http://www.example.com/available_slots', {
+    mock.onGet('http://www.example.com/partners/available_slots', {
       agenda_ids: 112,
       end_date: '2018-03-18',
       start_date: '2018-01-18',

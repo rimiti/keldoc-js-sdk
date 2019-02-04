@@ -24,7 +24,7 @@ describe('Config', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onGet('http://www.example.com/config').reply(200);
+    mock.onGet('http://www.example.com/partners/config').reply(200);
     return Promise.all([
       instance.config,
       instance.config,
@@ -44,7 +44,7 @@ describe('Config', () => {
   });
 
   it('GET', (done) => {
-    mock.onGet('http://www.example.com/config')
+    mock.onGet('http://www.example.com/partners/config')
       .reply(200, {
         agendas: [{
           id: 552,

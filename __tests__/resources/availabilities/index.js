@@ -24,7 +24,7 @@ describe('Avalabilities', () => {
   afterEach(() => mock.reset());
 
   it('Lazy loading', (done) => {
-    mock.onGet('http://www.example.com/availabilities').reply(200);
+    mock.onGet('http://www.example.com/partners/availabilities').reply(200);
     return Promise.all([
       instance.availabilities,
       instance.availabilities,
@@ -54,7 +54,7 @@ describe('Avalabilities', () => {
   });
 
   it('GET', (done) => {
-    mock.onGet('http://www.example.com/availabilities', {
+    mock.onGet('http://www.example.com/partners/availabilities', {
       agenda_ids: 112,
       end_date: '2017-09-18',
       start_date: '2017-09-18',
