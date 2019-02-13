@@ -1,6 +1,7 @@
 // @flow
 import axios from 'axios';
 import * as crypto from 'crypto-js';
+import momentTimezone from 'moment-timezone';
 import Validation from './validation';
 import type {Config} from './types';
 import {
@@ -44,9 +45,7 @@ export default class Common {
    * @returns {string}
    */
   generateToken(credentials: {clientAccessKeyId: string, secretAccessKeyId: string}): string {
-    const currentDate = new Date();
-    const date = new Date(currentDate.setMinutes(currentDate.getMinutes() - currentDate.getTimezoneOffset()));
-    this.headerDate = date.toUTCString().slice(0, -4);
+    this.headerDate = momentTimezone().tz('Europe/Paris').format();
     const message = `${this.headerDate},${this.headerContentType}`;
     const signature = crypto.enc.Base64.stringify(crypto.HmacSHA256(message, credentials.secretAccessKeyId));
     return `Bearer ${credentials.clientAccessKeyId}:${signature}`.replace(/[^A-Za-z0-9=:\s]/g, '');
