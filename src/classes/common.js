@@ -20,8 +20,6 @@ export default class Common {
 
   configuration: Config;
 
-  options: {};
-
   headerContentType: string;
 
   headerDate: string;
@@ -31,6 +29,13 @@ export default class Common {
     this.headerContentType = 'application/json';
     this.headerDate = '';
     this.configuration = configuration;
+  }
+
+  /**
+   * @description Generate a token for each requests.
+   * @returns {void}
+   */
+  generateHeader() {
     axios.defaults.headers.common = {
       Authorization: this.generateToken(this.configuration.credentials),
       Accept: 'application/vnd.keldoc-v1+json',
@@ -59,6 +64,7 @@ export default class Common {
    */
   getRequest(url: string, options: any): Promise<any> {
     return new Promise((resolve, reject) => {
+      this.generateHeader();
       axios.get(this.configuration.host + url, options)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
@@ -73,6 +79,7 @@ export default class Common {
    */
   postRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
+      this.generateHeader();
       axios.post(this.configuration.host + url, body)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
@@ -87,6 +94,7 @@ export default class Common {
    */
   putRequest(url: string, body: any): Promise<any> {
     return new Promise((resolve, reject) => {
+      this.generateHeader();
       axios.put(this.configuration.host + url, body)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
@@ -100,6 +108,7 @@ export default class Common {
    */
   deleteRequest(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
+      this.generateHeader();
       axios.delete(this.configuration.host + url)
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
