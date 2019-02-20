@@ -8,6 +8,3 @@ suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 
 [libs]
 flow-typed
-
-[version]
-0.92.0
