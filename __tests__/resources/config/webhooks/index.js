@@ -43,6 +43,15 @@ describe('Config', () => {
       });
   });
 
+  it('GET', (done) => {
+    mock.onGet('http://www.example.com/partners/config/webhooks').reply(200);
+    instance.configWebhooks.get()
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        done();
+      });
+  });
+
   it('POST', (done) => {
     mock.onPost('http://www.example.com/partners/config/webhooks', {url: 'http://test.webhook.com'})
       .reply(200, {url: 'https://partner.com/callback'});
