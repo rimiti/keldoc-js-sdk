@@ -4,6 +4,15 @@ import Validation from '../../../validation';
 
 export default class ConfigWebhooks extends Common {
   /**
+   * @description Get configuration.
+   * @return {Promise.<any>}
+   */
+  get(): Promise<any> {
+    const url = `${this.configuration.routes.configWebhooks}`;
+    return super.getRequest(url);
+  }
+
+  /**
    * @description Create webhook.
    * @param body
    * @return {Promise.<any>}
