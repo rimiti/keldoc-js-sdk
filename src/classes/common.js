@@ -36,7 +36,7 @@ export default class Common {
    * @returns {void}
    */
   generateHeader() {
-    axios.defaults.headers.common = {
+    axios.defaults.headers = {
       Authorization: this.generateToken(this.configuration.credentials),
       Accept: 'application/vnd.keldoc-v1+json',
       'Content-Type': this.headerContentType,
