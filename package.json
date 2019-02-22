@@ -1,6 +1,6 @@
 {
   "name": "@rimiti/keldoc-js-sdk",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "description": "Keldoc Javascript SDK",
   "license": "MIT",
   "main": "dist/index.js",
