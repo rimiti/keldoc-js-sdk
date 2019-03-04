@@ -34,11 +34,21 @@ describe('Available slots', () => {
         return Promise.all([
           instances[0].get({
             agenda_id: 112,
+            motive_ids: [
+              738,
+              738,
+              824,
+            ],
             end_date: '2018-03-18',
             start_date: '2018-01-18',
           }),
           instances[1].get({
             agenda_id: 112,
+            motive_ids: [
+              738,
+              738,
+              824,
+            ],
             end_date: '2018-03-18',
             start_date: '2018-01-18',
           }),
@@ -55,6 +65,11 @@ describe('Available slots', () => {
     mock.onGet('http://www.example.com/partners/available_slots').reply(200);
     return instance.availableSlots.get({
       agenda_id: 112,
+      motive_ids: [
+        738,
+        738,
+        824,
+      ],
       start_date: 'd2018-01-18',
       end_date: '2018-03-18',
     })
@@ -68,6 +83,11 @@ describe('Available slots', () => {
     mock.onGet('http://www.example.com/partners/available_slots').reply(200);
     return instance.availableSlots.get({
       agenda_id: 112,
+      motive_ids: [
+        738,
+        738,
+        824,
+      ],
       start_date: '2018-01-18',
       end_date: 'd2018-03-18',
     })
@@ -80,6 +100,11 @@ describe('Available slots', () => {
   it('GET', (done) => {
     mock.onGet('http://www.example.com/partners/available_slots', {
       agenda_ids: 112,
+      motive_ids: [
+        738,
+        738,
+        824,
+      ],
       end_date: '2018-03-18',
       start_date: '2018-01-18',
     })
@@ -677,6 +702,11 @@ describe('Available slots', () => {
       }]);
     instance.availableSlots.get({
       agenda_id: 112,
+      motive_ids: [
+        738,
+        738,
+        824,
+      ],
       end_date: '2018-03-18',
       start_date: '2018-01-18',
     })

@@ -47,11 +47,8 @@ export default class Validation {
    * @return {Promise<any>}
    */
   static validateFetchAvailableSlots(params: fetchAvailableSlotsRequest): Promise<any> {
-    const requiredParams = ['agenda_id', 'start_date', 'end_date'];
-    return Validation.validateMandatoryParams(requiredParams, params).then(() => {
-      if (!Validation.datetimeFormat(params.start_date)) throw new InvalidDatetimeFormat();
-      if (!Validation.datetimeFormat(params.end_date)) throw new InvalidDatetimeFormat();
-    });
+    const requiredParams = ['agenda_id', 'motive_ids'];
+    return Validation.validateMandatoryParams(requiredParams, params);
   }
 
   /**
