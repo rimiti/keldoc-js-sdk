@@ -59,13 +59,13 @@ export default class Common {
   /**
    * @description Runs GET request.
    * @param url
-   * @param options
+   * @param params
    * @return {Promise}
    */
-  getRequest(url: string, options: any): Promise<any> {
+  getRequest(url: string, params: any): Promise<any> {
     return new Promise((resolve, reject) => {
       this.generateHeader();
-      axios.get(this.configuration.host + url, options)
+      axios.get(this.configuration.host + url, {params})
         .then((response: {}) => resolve(response))
         .catch((error) => reject(Common.httpStatus(error.response)));
     });
