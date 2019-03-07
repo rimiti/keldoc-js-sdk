@@ -5,10 +5,11 @@ import type {fetchMotivesRequest} from '../../types';
 export default class Motives extends Common {
   /**
    * @description Get motives.
+   * @param params
    * @return {Promise.<any>}
    */
-  get(options: fetchMotivesRequest): Promise<any> {
+  get(params: fetchMotivesRequest): Promise<any> {
     const url = `${this.configuration.routes.motives}`;
-    return super.getRequest(url, options);
+    return super.getRequest(url, params);
   }
 }
