@@ -6,12 +6,12 @@ import type {fetchAvailabilitiesRequest} from '../../types';
 export default class Availabilities extends Common {
   /**
    * @description Get availabilities.
-   * @param body
+   * @param params
    * @return {Promise.<any>}
    */
-  get(body: fetchAvailabilitiesRequest): Promise<any> {
+  get(params: fetchAvailabilitiesRequest): Promise<any> {
     const url = `${this.configuration.routes.availabilities}`;
-    return Validation.validateFetchAvailabilities(body)
-      .then(() => super.getRequest(url, body));
+    return Validation.validateFetchAvailabilities(params)
+      .then(() => super.getRequest(url, params));
   }
 }
